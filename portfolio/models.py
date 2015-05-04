@@ -1,5 +1,5 @@
 from django.db import models
-from hvad.models import TranslatableModel, TranslatedFields
+# from hvad.models import TranslatableModel, TranslatedFields
 # django-hvad Doc : for translations
 # http://django-hvad.readthedocs.org/en/latest/public/quickstart.html
 
@@ -22,15 +22,15 @@ class Tag(models.Model):
 		return self.name
 	
 	
-class Work(TranslatableModel):
-	translations = TranslatedFields(
-		title = models.CharField(max_length=200),
-		content = models.TextField(),
-	)
+class Work(models.Model):
+	title = models.CharField(max_length=200)
+	content = models.TextField()
 	date = models.DateField()
 	
-	techs = models.ManyToManyField(Tech)
-	tags = models.ManyToManyField(Tag)
+	image = models.ImageField(blank=True)
+	
+	techs = models.ManyToManyField(Tech, blank=True)
+	tags = models.ManyToManyField(Tag, blank=True)
 	
 	def __unicode__(self):
 		return self.title
