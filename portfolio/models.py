@@ -1,6 +1,8 @@
 from django.db import models
+from hvad.models import TranslatableModel, TranslatedFields
+# django-hvad Doc : for translations
+# http://django-hvad.readthedocs.org/en/latest/public/quickstart.html
 
-# Create your models here.
 
 """
 Tech : ex python
@@ -11,22 +13,24 @@ class Tech(models.Model):
 	notes = models.CharField(max_length=200)
 	
 	def __unicode__(self):
-        return self.name
+		return self.name
 	
 class Tag(models.Model):
 	name = models.CharField(max_length=200)
 	
 	def __unicode__(self):
-        return self.name
+		return self.name
 	
 	
-class Work(models.Model):
-	title = models.CharField(max_length=200)
-	content = models.TextField()
+class Work(TranslatableModel):
+	translations = TranslatedFields(
+		title = models.CharField(max_length=200),
+		content = models.TextField(),
+	)
 	date = models.DateField()
 	
-	techs = ManyToManyField(Tech)
-	tags = ManyToManyField(Tag)
+	techs = models.ManyToManyField(Tech)
+	tags = models.ManyToManyField(Tag)
 	
 	def __unicode__(self):
-        return self.title
+		return self.title
