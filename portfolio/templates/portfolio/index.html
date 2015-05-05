@@ -1,1 +1,11 @@
 hellow
+
+{% if works %}	
+	{% for w in works %}
+		{{ w.title }}
+		{{ w.content }}
+	{% endfor %}
+{% endif %}
+
+<br/>
+{{ wtitle }}
