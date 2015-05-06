@@ -6,8 +6,8 @@ urlpatterns = [
     # url(r'^$', 'myportfolio.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     
-    url(r'^admin/', include(admin.site.urls)), 
-    url(r'^summernote/', include('django_summernote.urls')),   
+    url(r'^admin/', include(admin.site.urls)),  
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^$', include('portfolio.urls')),
     url(r'/*', include('portfolio.urls')),
 

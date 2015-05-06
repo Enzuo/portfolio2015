@@ -1,6 +1,6 @@
 from django.contrib import admin
-
-from django_summernote.admin import SummernoteModelAdmin
+from django import forms
+from django.db import models
 
 from portfolio.models import Work, Tech, Tag
 
@@ -9,7 +9,10 @@ from portfolio.models import Work, Tech, Tag
 admin.site.register(Tech)
 admin.site.register(Tag)
 
-class WorkAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
-    pass
+class WorkModelAdmin(admin.ModelAdmin):
+    formfield_overrides = { models.TextField: {'widget': forms.Textarea(attrs={'class':'ckeditor'})}, }
+
+    class Media:
+        js = ('/static/ckeditor/ckeditor/ckeditor.js',)
     
-admin.site.register(Work, WorkAdmin)
+admin.site.register(Work, WorkModelAdmin)
