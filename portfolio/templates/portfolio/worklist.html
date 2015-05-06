@@ -9,7 +9,11 @@
 			
 			<section class="work-details">
 				<h1>{{ w.title }}</h1>
-				<div class="work-techs"></div>
+				<div class="work-techs">
+					{% for t in w.techs.all %}
+						{{ t.icon_32 }}
+					{% endfor %}
+				</div>
 			</section>
 			
 			<section class="work-full">

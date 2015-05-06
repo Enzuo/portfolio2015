@@ -5,8 +5,10 @@ from redactor.widgets import RedactorEditor
 
 from portfolio.models import Work, Tech, Tag
 
-
-admin.site.register(Tech)
+class TechAdmin(admin.ModelAdmin):
+	list_display = ('name', 'icon_32')
+	
+admin.site.register(Tech, TechAdmin)
 admin.site.register(Tag)
 
 #https://github.com/TigorC/django-redactorjs
@@ -21,6 +23,7 @@ class WorkAdminForm(forms.ModelForm):
 		fields = '__all__'
 
 class WorkAdmin(admin.ModelAdmin):
+	list_display = ('title', 'used_techs','translated_in')
 	form = WorkAdminForm
 	
 admin.site.register(Work, WorkAdmin)
