@@ -1,0 +1,25 @@
+{% if works %}	
+
+	<div id="work-list">
+		
+		{% for w in works %}
+		<div class="work" id="work-{{ w.id }}">
+			<section class="work-thumbnail">
+				{{ w.image }}
+			</section>
+			
+			<section class="work-details">
+				<h1>{{ w.title }}</h1>
+				<div class="work-techs"></div>
+			</section>
+			
+			<section class="work-full">
+				<h1>{{ w.title }}</h1>
+				{{ w.content }}
+			</section>
+		</div>	
+		{% endfor %}	
+		
+	</div>
+
+{% endif %}

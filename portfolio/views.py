@@ -41,5 +41,5 @@ def languageSelect(request, lang_code):
 								path=settings.LANGUAGE_COOKIE_PATH,
 								domain=settings.LANGUAGE_COOKIE_DOMAIN)
 		
-	#return response
-	return HttpResponse('coucou ' +lang_code+ ' '+request.session[LANGUAGE_SESSION_KEY])
+	return response
+	#return HttpResponse('coucou ' +lang_code+ ' '+request.session[LANGUAGE_SESSION_KEY])

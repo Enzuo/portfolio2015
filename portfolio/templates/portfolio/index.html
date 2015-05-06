@@ -1,11 +1,41 @@
-hellow
+{% extends 'portfolio/base.html' %}
+{% load i18n %} 
 
-{% if works %}	
-	{% for w in works %}
-		{{ w.title }}
-		{{ w.content }}
-	{% endfor %}
-{% endif %}
+{% block body_block %}
 
-<br/>
+<section id="main">
+	<h1>Enzo Ghemard</h1>
+	<p class="welcome-msg">{% trans "Welcome." %}</p>
+	
+	<nav class="menu">
+	</nav>
+	
+
+	<nav id="language-selector">
+	
+		<a href="/lang/en/">en</a>
+		<a href="/lang/fr/">fr</a>
+		<a href="/lang/zh/">中文</a>
+	
+	</nav>
+</section>
+<section id="aboutme">
+	<article class="about">
+	
+	
+	
+	</article>
+</section>
+
+<section id="contact">
+
+</section>
+
+<section id="mywork">
+	{% include "portfolio/worklist.html" %}
+</section>
+
+
+
+{% endblock %}
 {{ wtitle }}

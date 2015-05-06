@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %} 
+
+<html>
+	<head>
+		<title>Enzo Ghemard - Portfolio</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link href="{% static 'portfolio/css/style.css' %}" rel="stylesheet">
+	</head>
+
+	<body>				
+		{% block body_block %}{% endblock %}
+		
+
+		<script type="text/javascript" src=="{% static 'portfolio/js/script.js' %}"></script>
+	</body>
+</html>
+
