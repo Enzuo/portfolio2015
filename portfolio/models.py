@@ -27,7 +27,7 @@ class Work(models.Model):
 	content = models.TextField()
 	date = models.DateField()
 	
-	image = models.ImageField(blank=True)
+	image = models.ImageField(upload_to = 'images/thumb/', blank=True)
 	
 	techs = models.ManyToManyField(Tech, blank=True)
 	tags = models.ManyToManyField(Tag, blank=True)

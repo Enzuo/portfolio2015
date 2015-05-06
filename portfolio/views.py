@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.utils.translation import (
@@ -18,10 +18,10 @@ def index(request):
 	w = works[0]
 	title = w.title
 	
-	context = {
+	context = RequestContext(request,{
 		'works' : works,
 		'wtitle' : title,
-	}
+	})
 	
 	return render(request, 'portfolio/index.html', context)
 	
