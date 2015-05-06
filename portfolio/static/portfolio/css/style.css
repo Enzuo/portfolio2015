@@ -1,0 +1,18 @@
+html, body{
+	height:100%;
+	width:100%;
+	background: #555;
+}
+
+#main {
+	height:100%;
+	width:100%;
+}
+
+#aboutme {
+	background:#FFF;
+}
+
+#main h1, #main nav.menu a{
+	color:#FFF;
+}

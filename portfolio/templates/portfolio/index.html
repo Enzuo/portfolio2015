@@ -4,14 +4,21 @@
 {% block body_block %}
 
 <section id="main">
-	<h1>Enzo Ghemard</h1>
-	<p class="welcome-msg">{% trans "Welcome." %}</p>
-	
-	<nav class="menu">
-	</nav>
-	
-
-	<nav id="language-selector">
+	<header>
+		<h1>Enzo Ghemard</h1>
+		<nav class="menu">
+			<a href="#">work</a>
+			<a href="#">about me</a>
+			<a href="#">contact</a>
+		</nav>
+	</header>
+	<p class="welcome-msg">
+		{% blocktrans %}
+		<span class="big"><span class="w">Welcome</span> to my <span class="w">portfolio</span><br/></span>
+		I'm a <span class="w">developper</span> who loves to work on new ideas
+		{% endblocktrans %}	
+	</p>
+	<nav class="language">
 	
 		<a href="/lang/en/">en</a>
 		<a href="/lang/fr/">fr</a>
@@ -22,7 +29,7 @@
 <section id="aboutme">
 	<article class="about">
 	
-	
+		about me
 	
 	</article>
 </section>
@@ -32,6 +39,13 @@
 </section>
 
 <section id="mywork">
+	<header>
+		<h1>Enzo Ghemard <span>{% trans "work" %}</span></h1>
+		<nav class="menu">
+			<a href="#">about me</a>
+			<a href="#">contact</a>
+		</nav>
+	</header>
 	{% include "portfolio/worklist.html" %}
 </section>
 

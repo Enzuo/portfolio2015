@@ -2,12 +2,14 @@
 	<div id="work-list">
 		
 		{% for w in works %}
-		<div class="work" id="work-{{ w.id }}">
-			<section class="work-thumbnail">
+		<div class="work" id="work-{{ w.id }}" style="background-image:url({{ MEDIA_URL }}{{ w.image }})">
+			{% if false %}
+			<section class="thumbnail">
 				<img src="{{ MEDIA_URL }}{{ w.image }}"/>
 			</section>
+			{% endif %}
 			
-			<section class="work-details">
+			<section class="details">
 				<h1>{{ w.title }}</h1>
 				<div class="work-techs">
 					{% for t in w.techs.all %}
