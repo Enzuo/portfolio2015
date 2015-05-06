@@ -15,7 +15,7 @@
 			
 			<section class="work-full">
 				<h1>{{ w.title }}</h1>
-				{{ w.content }}
+				{{ w.content |safe}}
 			</section>
 		</div>	
 		{% endfor %}	

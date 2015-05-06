@@ -1,5 +1,6 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
+from django.conf import settings
 
 urlpatterns = [
     # Examples:
@@ -7,8 +8,15 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     
     url(r'^admin/', include(admin.site.urls)),  
-    url(r'^ckeditor/', include('ckeditor.urls')),
+    url(r'^redactor/', include('redactor.urls')),
     url(r'^$', include('portfolio.urls')),
     url(r'/*', include('portfolio.urls')),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += patterns(
+        'django.views.static',
+        (r'media/(?P<path>.*)',
+        'serve',
+        {'document_root': settings.MEDIA_ROOT}), )
