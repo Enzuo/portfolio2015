@@ -52,6 +52,9 @@ header{
 	height:100%;
 	width:100%;
 	
+	background:url(../img/main_bck.jpg);
+	background-size:   cover; 
+	
 	/* Menu Color */
 	header{
 		
@@ -101,14 +104,34 @@ header{
 }
 
 #aboutme {
-	background:#FFF;
+	background:url();
 }
 
+/*switch LOGIC*/
+#index{
+	z-index:10;
+	position:absolute;
+	height:100%;
+	width:100%;
+}
+
+#work{
+	position:fixed;
+	top:0px;
+	z-index:1;
+	height:100%;
+	width:100%;
+}
+/*switch LOGIC*/
+
+
 @worksize:240px;
+@workmargin:40px;
 #mywork {
 
 	background:#FFF;
 	height:100%;
+	overflow:hidden;
 
 	header{
 		
@@ -131,31 +154,64 @@ header{
 		padding-top:100px;
 		margin:0px 23% ;
 
-		.work {
+		.work-wrapper{
+		
 			display:block;
 			float:left;
 			width:@worksize;
 			height:@worksize;
+			margin-right:@workmargin;
+			margin-bottom:@workmargin;
+		
+			.work {
+				display:block;
+				position:relative;
+				
+				height:100%;
+				width:100%;
+				float:left;
+				
+				background-size:contain;
+				
+
+				
+				@shadow_color:#ccc;
+				@blur_radius:10px;
+				/*cast shadow*/
+				-moz-box-shadow: 3px 3px @blur_radius @shadow_color;
+				-webkit-box-shadow: 3px 3px @blur_radius @shadow_color;
+				box-shadow: 3px 3px @blur_radius @shadow_color;
+				
+				.thumbnail img{
+					width:@worksize;
+					height:@worksize;
+				}		
+				
+				.details {
+					margin-top:20px;
+					background:rgba(255,255,255,0.8);
+					padding:10px;
+					
+					h1{
+						line-height:40px;
+						font-size:24px;
+					}
+				}
 			
-			margin-right:40px;
-			
-			@shadow_color:#ccc;
-			@blur_radius:10px;
-			/*cast shadow*/
-			-moz-box-shadow: 3px 3px @blur_radius @shadow_color;
-			-webkit-box-shadow: 3px 3px @blur_radius @shadow_color;
-			box-shadow: 3px 3px @blur_radius @shadow_color;
-			
-			.thumbnail img{
-				width:@worksize;
-				height:@worksize;
+				.work-techs {
+					position:absolute;
+					right: -25px;
+					top: 10px;
+					
+					background: none repeat scroll 0 0 #fff;
+					border: 1px solid #aaa;
+					border-radius: 24px;
+					padding: 9px;
+
+					width: 32px;
+				}
 			}
 		}
-		
-		.details {
-			background:#FFF;
-		}
-	
 	}
 	
 
@@ -170,4 +226,11 @@ header{
 
 }
 
+#contact{
+	height:100%
+	}
+
+.hided{
+	opacity:0;
+}
 
