@@ -5,7 +5,7 @@ from django.utils.translation import (
 	LANGUAGE_SESSION_KEY, check_for_language, get_language, to_locale,
 )
 
-from portfolio.models import Work
+from portfolio.models import Work, Tech
 
 
 
@@ -18,9 +18,12 @@ def index(request):
 	w = works[0]
 	title = w.title
 	
+	techs = Tech.objects.all()
+	
 	context = RequestContext(request,{
 		'works' : works,
 		'wtitle' : title,
+		'work_filters' : techs,
 	})
 	
 	return render(request, 'portfolio/index.html', context)

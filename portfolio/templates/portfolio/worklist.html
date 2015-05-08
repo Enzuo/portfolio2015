@@ -1,32 +1,47 @@
 {% if works %}	
 	<div id="work-list">
-		
-		{% for w in works %}
-		<div class="work-wrapper">
-			<div class="work hided" id="work-{{ w.id }}" style="background-image:url({{ MEDIA_URL }}{{ w.image }})">
-				{% if false %}
-				<section class="thumbnail">
-					<img src="{{ MEDIA_URL }}{{ w.image }}"/>
-				</section>
-				{% endif %}
-				
-				<section class="details">
-					<h1>{{ w.title }}</h1>
-					<div class="work-techs">
-						{% for t in w.techs.all %}
-							{{ t.icon_32 }}
-						{% endfor %}
-					</div>
-				</section>
-				
-				<section class="work-full">
-					<h1>{{ w.title }}</h1>
-					{{ w.content |safe}}
-				</section>
+		<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		<div class="viewport">
+			<div class="overview">
+			{% for w in works %}
+			<div class="work-wrapper">
+				<div class="work" id="work-{{ w.id }}" style="opacity:0; background-image:url({{ MEDIA_URL }}{{ w.image }})">
+					{% if false %}
+					<section class="thumbnail">
+						<img src="{{ MEDIA_URL }}{{ w.image }}"/>
+					</section>
+					{% endif %}
+					
+					<section class="details" style="display:none">
+						<h1>{{ w.title }}</h1>
+						<div class="work-techs">
+							{% for t in w.techs.all %}
+								{{ t.icon_32 }}
+							{% endfor %}
+						</div>
+					</section>
+					
+					<section class="work-full">
+						<h1>{{ w.title }}</h1>
+						{{ w.content |safe}}
+					</section>
+				</div>	
+			</div>		
+			{% endfor %}
+			<div style="clear:both"></div>
 			</div>	
 		</div>
-		{% endfor %}	
-		
 	</div>
-
+	
+	{% if work_filters %}
+	<div id="work-filters">
+		<a class="toggle" href="">Toggle Filters</a>
+		<div id="filters">
+			{% for filter in work_filters %}
+				<div class="filter" name="{{filter.name}}">{{ filter }}</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif%}
+	
 {% endif %}

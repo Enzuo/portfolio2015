@@ -35,7 +35,7 @@ var SlideSwitcher = {
 	slide1 : "index",
 	slide2 : "work",
  
-    init: function() {
+	init: function() {
 		/* get the pages */
 		SlideSwitcher.index = $("#index");
 		SlideSwitcher.work = $("#work");
@@ -43,15 +43,37 @@ var SlideSwitcher = {
 		/* assign links*/
 		a = $("a[href='work']")
 		a.bind("click", SlideSwitcher.gotoWork);
-    },
-    
-    gotoIndex: function(event) {
+		
+		a = $("a[href^='index']")
+		a.bind("click", SlideSwitcher.gotoIndex);
+		
+		/* hover behavior*/
+		$( ".work" ).hover(
+			function() {
+				$( this ).find( ".details" ).show();
+			}, function() {
+				$( this ).find( ".details" ).hide();
+			}
+		);
+		
+		/*filters*/
+		$( ".toggle" ).click(function(e){
+			e.preventDefault();
+			$( "#filters" ).css({animate:".5",right:"0px"});
+		});
+		
+		/*scroll*/
+		$("#work-list").tinyscrollbar();
+		
+	},
+	
+	gotoIndex: function(event) {
 		event.preventDefault();
 		SlideSwitcher.index.removeClass().addClass("slide in reverse");
 		
 	},
-    
-    gotoWork: function(event) {
+	
+	gotoWork: function(event) {
 		event.preventDefault();
 		SlideSwitcher.index.removeClass().addClass("slide out");
 		
@@ -59,7 +81,7 @@ var SlideSwitcher = {
 			SlideSwitcher.popWorkObjects();
 		},350);
 		
-		history.pushState(stateObj, "page 2", "/work");
+		//history.pushState(stateObj, "page 2", "/work");
 		
 	},
 	
@@ -67,11 +89,6 @@ var SlideSwitcher = {
 		$( ".work" ).each(function(i){
 			var e = $(this);
 			setTimeout(function(){ 
-				/*element.removeClass("hided");
-				element.animate({
-					width:"100%",
-					height:"100%",
-				});*/
 				e.not(':animated')
 					.css({'opacity': 1 })
 					.effect("scale", 
@@ -80,7 +97,6 @@ var SlideSwitcher = {
 							from:{width:e.width()/2,height:e.height()/2}, 
 							percent: 100, 
 							direction: 'both', 
-							//easing: "easeOutBounce" 
 						}, 700);			
 			},i*250);
 		});

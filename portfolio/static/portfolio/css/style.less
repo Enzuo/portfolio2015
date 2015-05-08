@@ -108,11 +108,16 @@ header{
 }
 
 /*switch LOGIC*/
+@minheight:400px;
+@minwidth:500px;
 #index{
 	z-index:10;
 	position:absolute;
 	height:100%;
 	width:100%;
+		
+	min-width:@minwidth;
+	min-height:@minheight;	
 }
 
 #work{
@@ -121,11 +126,14 @@ header{
 	z-index:1;
 	height:100%;
 	width:100%;
+	
+	min-width:@minwidth;
+	min-height:@minheight;	
 }
 /*switch LOGIC*/
 
 
-@worksize:240px;
+@worksize:220px;
 @workmargin:40px;
 #mywork {
 
@@ -167,9 +175,12 @@ header{
 				display:block;
 				position:relative;
 				
+				
 				height:100%;
 				width:100%;
 				float:left;
+				
+				cursor:pointer;
 				
 				background-size:contain;
 				
@@ -222,6 +233,30 @@ header{
 	.work-full {
 		display:none;
 	}
+	
+	#work-filters {
+		position:absolute;
+		right:0px;
+		top:0px;
+		height:100%;
+		
+		.toggle{
+			width:45px;
+			height:45px;
+			margin-top:100px;
+			display:block;
+			background:#000;
+		}
+		
+		#filters{
+			position:absolute;
+			height:100%;
+			width:50px;
+			right:-50px;
+			top:0px;
+		}
+	
+	}
 
 
 }
@@ -233,4 +268,15 @@ header{
 .hided{
 	opacity:0;
 }
+
+/* work scroll */
+.viewport {
+	height:200px;
+}
+
+.overview {
+	position:absolute;
+	margin-top:150px;
+	margin-bottom:150px;
+	}
 
