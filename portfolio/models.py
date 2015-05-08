@@ -85,3 +85,18 @@ class Work(models.Model):
 			flags += '<img style="height:20px; width:32px; margin:4px" src="'+settings.STATIC_URL +'portfolio/img/flags/en.png"/>'
 		
 		return format_html(flags)
+		
+class Article(models.Model):
+	title = models.CharField(max_length=200)
+	content = models.TextField()
+	
+	def translated_in(self):
+		flags = ""
+		if len(self.content_zh) > 1:
+			flags += '<img style="height:20px; width:32px; margin:4px" src="'+settings.STATIC_URL +'portfolio/img/flags/zh.png"/>'
+		if len(self.content_fr) > 1:
+			flags += '<img style="height:20px; width:32px; margin:4px" src="'+settings.STATIC_URL +'portfolio/img/flags/fr.png"/>'
+		if len(self.content_en) > 1:
+			flags += '<img style="height:20px; width:32px; margin:4px" src="'+settings.STATIC_URL +'portfolio/img/flags/en.png"/>'
+		
+		return format_html(flags)

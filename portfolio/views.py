@@ -5,7 +5,7 @@ from django.utils.translation import (
 	LANGUAGE_SESSION_KEY, check_for_language, get_language, to_locale,
 )
 
-from portfolio.models import Work, Tech
+from portfolio.models import Work, Tech, Article
 
 
 
@@ -20,10 +20,18 @@ def index(request):
 	
 	techs = Tech.objects.all()
 	
+	#aboutme = Article.objects.get(title="About me") #might be a pb with translation here
+	#if not aboutme:
+	#Make sure there is pk = 1 article otherwise crash... TODO
+	aboutme = Article.objects.get(pk=1)
+	
+	
+	
 	context = RequestContext(request,{
 		'works' : works,
 		'wtitle' : title,
 		'work_filters' : techs,
+		'aboutme' : aboutme,
 	})
 	
 	return render(request, 'portfolio/index.html', context)

@@ -1,11 +1,15 @@
 from modeltranslation.translator import translator, TranslationOptions
-from portfolio.models import Work
+from portfolio.models import Work, Article
 
 class WorkTranslationOptions(TranslationOptions):
+    fields = ('title', 'content',)
+    
+class ArticleTranslationOptions(TranslationOptions):
     fields = ('title', 'content',)
 
 
 translator.register(Work, WorkTranslationOptions)
+translator.register(Article, ArticleTranslationOptions)
 
 '''
 Rule 1
