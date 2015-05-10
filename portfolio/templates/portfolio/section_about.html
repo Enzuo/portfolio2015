@@ -1,0 +1,20 @@
+{% load i18n %} 
+
+<section id="about">
+	<article class="about">
+		
+		<div class="content">
+		{{ aboutme.content | safe }}
+		</div>
+		<div class="world-map"></div>
+	</article>
+	
+	<article>
+		<h1>{% trans "My skills" %}</h1>
+	</article>
+	<article>
+		<h1>{% trans "My hobbies" %}</h1>
+		<div class="hobbies">
+		</div>
+	</article>
+</section>

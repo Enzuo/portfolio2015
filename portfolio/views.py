@@ -9,7 +9,26 @@ from portfolio.models import Work, Tech, Article
 
 
 
+def view_index(request):
+	
+	aboutme = Article.objects.get(pk=1)
+	context = {
+		'aboutme' : aboutme,
+	}
+	
+	return render(request, 'portfolio/view_index.html', context)
 
+def view_work(request):
+	
+	works = Work.objects.all()
+	techs = Tech.objects.all()
+	
+	context = {
+		'works' : works,
+		'work_filters' : techs,
+	}
+	
+	return render(request, 'portfolio/view_work.html', context)
 
 def index(request):
 	
