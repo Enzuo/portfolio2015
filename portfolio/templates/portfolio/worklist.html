@@ -1,44 +1,47 @@
 {% if works %}	
 	<div id="work-list">
-		<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
-		<div class="viewport">
-			<div class="overview">
-			{% for w in works %}
-			<div class="work-wrapper">
-				<div class="work" id="work-{{ w.id }}" style="opacity:0; background-image:url({{ MEDIA_URL }}{{ w.image }})">
-					{% if false %}
-					<section class="thumbnail">
-						<img src="{{ MEDIA_URL }}{{ w.image }}"/>
-					</section>
-					{% endif %}
-					
-					<section class="details" style="display:none">
-						<h1>{{ w.title }}</h1>
-						<div class="work-techs">
-							{% for t in w.techs.all %}
-								{{ t.icon_32 }}
-							{% endfor %}
+		{% for w in works %}
+		<div class="work-wrapper" >
+			<div class="work" id="work-{{ w.id }}" style="opacity:0; background-image:url({{ MEDIA_URL }}{{ w.image }})">
+				{% if false %}
+				<section class="thumbnail">
+					<img src="{{ MEDIA_URL }}{{ w.image }}"/>
+				</section>
+				{% endif %}
+				
+				<section class="details" style="display:none">
+					<h1>{{ w.title }}</h1>
+					{% if w.techs.all %}
+					<div class="work-techs">
+						{% for t in w.techs.all %}
+						<div class="tech" name="{{t.name}}">
+							{{ t.icon_32 }}
 						</div>
-					</section>
-					
-					<section class="work-full">
-						<h1>{{ w.title }}</h1>
-						{{ w.content |safe}}
-					</section>
-				</div>	
-			</div>		
-			{% endfor %}
-			<div style="clear:both"></div>
+						{% endfor %}
+					</div>
+					{% endif %}
+				</section>
+				
+				<section class="work-full">
+					<h1>{{ w.title }}</h1>
+					{{ w.content |safe}}
+				</section>
 			</div>	
-		</div>
+		</div>		
+		{% endfor %}
+		<div style="clear:both"></div>
 	</div>
 	
 	{% if work_filters %}
-	<div id="work-filters">
-		<a class="toggle" href="">Toggle Filters</a>
-		<div id="filters">
+	<div id="filters">
+		<a class="filters-toggle" href="">Toggle Filters</a>
+		<div id="filters-list">
 			{% for filter in work_filters %}
-				<div class="filter" name="{{filter.name}}">{{ filter }}</div>
+				<div class="filter" name="{{filter.name}}">
+					{{ filter }}
+					<img class="enabled" src="{{ MEDIA_URL }}{{ filter.icon }}"/>
+					<img class="disabled" src="{{ MEDIA_URL }}{{ filter.icon_g }}"/>
+				</div>
 			{% endfor %}
 		</div>
 	</div>

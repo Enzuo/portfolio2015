@@ -276,13 +276,13 @@ header{
 		display:none;
 	}
 	
-	#work-filters {
+	#filters {
 		position:absolute;
 		right:0px;
 		top:0px;
 		height:100%;
 		
-		.toggle{
+		.filters-toggle{
 			width:45px;
 			height:45px;
 			margin-top:100px;
@@ -290,13 +290,34 @@ header{
 			background:#000;
 		}
 		
-		#filters{
+		#filters-list{
 			position:absolute;
 			height:100%;
 			width:50px;
 			right:-50px;
 			top:0px;
 		}
+		
+		.filter img{
+			height:32px;
+			width:32px;
+			padding:8px;
+
+		}
+		.filter img.disabled{
+				display:none;
+		}
+		
+		.filter.disabled{
+			img.disabled{
+				display:block;
+			}
+			
+			img.enabled{
+				display:none;
+			}
+		}
+		
 	
 	}
 
