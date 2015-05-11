@@ -180,6 +180,32 @@
 		
 	
 	}
+	
+	#work-viewer{
+		height:100%;
+		width:100%;
+		position:fixed;
+		top:0;
+		left:0;
+		z-index:50;
+		
+		.background{
+			position:absolute;
+			height:100%;
+			width:100%;
+			background: rgba(0,0,0,0.8);
+		}
+		
+		.content-viewer{
+			background: #fff;
+			height:80%;
+			top:10%;
+			margin: 0 10%;
+			overflow-y: scroll;
+			z-index:100;
+			position:relative;
+		}
+	}
 
 
 }

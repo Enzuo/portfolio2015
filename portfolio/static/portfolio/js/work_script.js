@@ -28,6 +28,8 @@ var WI = { //WI stands for WorkInteractions
 	
 	work_list : new Array(),
 	
+	workview : false,
+	
 	init : function() {
 	
 	
@@ -67,6 +69,23 @@ var WI = { //WI stands for WorkInteractions
 			WI.applyFilters();
 		});
 		
+		//Set up work view
+		WI.workview = $("#work-viewer");
+		
+		$(".work").on("click",function(){
+			var content = $(this).find(".work-full").html();
+			WI.displayWorkView( content );
+		});
+		
+		$(".background").on("click",function(){
+			WI.workview.hide();
+		});
+	},
+	
+	displayWorkView : function( content ){
+		WI.workview.find(".content").html(content);
+		
+		WI.workview.show();
 	},
 	
 	displayDetails : function( e ){

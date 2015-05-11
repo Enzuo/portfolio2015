@@ -1,3 +1,4 @@
+from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -6,6 +7,7 @@ from django.utils.translation import (
 )
 
 from portfolio.models import Work, Tech, Article, Tag
+from portfolio.forms import ContactForm
 
 
 
@@ -14,9 +16,27 @@ def view_index(request):
 	aboutme = Article.objects.get(pk=1)
 	tags = Tag.objects.all();
 	
+	#Contact form
+	if request.method == 'GET':
+		form = ContactForm()
+	else:
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			from_email = form.cleaned_data['email']
+			name = form.cleaned_data['name']
+			subject = form.cleaned_data['subject']
+			message = form.cleaned_data['message']
+			
+			try:
+				send_mail(subject, message+" from "+name, from_email, ['potc.zone@gmail.com'])
+			except BadHeaderError:
+				return HttpResponse('Invalid header found.')
+			return redirect('thanks')
+	
 	context = {
 		'aboutme' : aboutme,
-		'tags' : tags
+		'tags' : tags,
+		'form' : form,
 	}
 	
 	return render(request, 'portfolio/view_index.html', context)

@@ -3,6 +3,14 @@
 <section id="contact">	
 	<h1>Contact</h1>	
 	<div class="contact-form">
+		
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class="form-actions">
+			  <button type="submit">Send</button>
+			</div>
+		</form>
 	</div>
 	<footer>
 		<div class="social-links">
