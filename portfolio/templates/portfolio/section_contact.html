@@ -1,4 +1,5 @@
 {% load i18n %} 
+{% load static %}
 
 <section id="contact">	
 	<h1>Contact</h1>	
@@ -14,15 +15,17 @@
 	</div>
 	<footer>
 		<div class="social-links">
-			<p>{% trans "Add me on : " %}</p>
-			<a href="">Wechat</a>
-			<a href="">Google</a>
+			<p>{% trans "Add me on : " %}
+			<a href=""><img src="{% static 'portfolio/img/wechat.png' %}" alt="Wechat" title="Wechat"/></a>
+			<a href=""><img src="{% static 'portfolio/img/googleplus.png' %}" alt="Google" title="Google"/></a>	
+			</p>	
+			<p class="email">
+				Or send me a mail directly at : <span class="mail">enzo.ghemard -at- free.fr</span>
+			</p>
 		</div>
-		<div class="email">
-			Or send me a mail directly at :
-		</div>
+
 		<div id="copyright">
-			2015 Copyright Enzo Ghémard
+			Website powered by Django, JQuery, Less. Hosted on Heroku. 2015 Copyright Enzo Ghémard
 		</div>
 	</footer>
 </section>
