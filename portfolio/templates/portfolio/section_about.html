@@ -9,9 +9,19 @@
 		<div class="world-map"></div>
 	</article>
 	
+	{% if tags %}
 	<article>
 		<h1>{% trans "My skills" %}</h1>
+		
+		{% for skill in tags %}
+			<div class="skill" value="{{ skill.level }}">
+				<h2>{{skill.name}}</h2><div class="skill-bar" ><div class="bar"></div></div>
+			</div>
+		{% endfor %}
+		
 	</article>
+	{% endif %}
+	
 	<article>
 		<h1>{% trans "My hobbies" %}</h1>
 		<div class="hobbies">

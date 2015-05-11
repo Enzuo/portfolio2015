@@ -147,11 +147,51 @@ header{
 		right:-50px;
 		z-index:0;
 	}
+	
+	.skill {
+		
+		clear:both;
+		margin: 8px 0;
+		
+		h2{
+			width:280px;
+			text-align:right;
+			line-height:32px;
+			display:block;
+			float:left;
+			margin-right:25px;
+		}
+		
+		.skill-bar{	
+			display:block;
+			float:left;
+			height:32px;
+			width:500px;
+			border-left:1px solid #444;
+			
+			.bar{
+				height:4px;
+				margin: 14px 0;
+				float:left;
+				background: #6598c5;
+			}
+		}
+	}
+	
+	.skill:after{
+	   content: " ";
+	   display: block; 
+	   height: 0; 
+	   clear: both;
+	}
+	
+	
 }
 
 /*switch LOGIC*/
 @minheight:400px;
 @minwidth:500px;
+/*
 #index{
 	z-index:10;
 	position:absolute;
@@ -171,7 +211,7 @@ header{
 	
 	min-width:@minwidth;
 	min-height:@minheight;	
-}
+}*/
 /*switch LOGIC*/
 
 
@@ -181,7 +221,6 @@ header{
 
 	background:#FFF;
 	height:100%;
-	overflow:hidden;
 
 	header{
 		
@@ -281,6 +320,7 @@ header{
 		right:0px;
 		top:0px;
 		height:100%;
+		overflow-x: hidden;
 		
 		.filters-toggle.search{
 			width:45px;
@@ -304,6 +344,8 @@ header{
 			height:32px;
 			width:32px;
 			padding:8px;
+			cursor:pointer;
+			display:block;
 
 		}
 		.filter img.disabled{

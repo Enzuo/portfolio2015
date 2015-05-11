@@ -5,15 +5,18 @@ from django.utils.translation import (
 	LANGUAGE_SESSION_KEY, check_for_language, get_language, to_locale,
 )
 
-from portfolio.models import Work, Tech, Article
+from portfolio.models import Work, Tech, Article, Tag
 
 
 
 def view_index(request):
 	
 	aboutme = Article.objects.get(pk=1)
+	tags = Tag.objects.all();
+	
 	context = {
 		'aboutme' : aboutme,
+		'tags' : tags
 	}
 	
 	return render(request, 'portfolio/view_index.html', context)

@@ -1,5 +1,6 @@
 {% extends 'portfolio/base.html' %}
 {% load i18n %} 
+{% load static %} 
 
 {% block view_block %}
 
@@ -10,6 +11,6 @@
 		{% include "portfolio/section_about.html" %}
 		{% include "portfolio/section_contact.html" %}
 
-
+		<script type="text/javascript" src="{% static 'portfolio/js/about_script.js' %}"></script>
 
 {% endblock %}

@@ -54,6 +54,8 @@ class Tech(models.Model):
 	
 class Tag(models.Model):
 	name = models.CharField(max_length=200)
+	level = models.IntegerField( default = 50 )
+	
 	
 	def __unicode__(self):
 		return self.name
