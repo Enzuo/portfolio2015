@@ -34,8 +34,9 @@
 	
 	{% if work_filters %}
 	<div id="filters">
-		<a class="filters-toggle" href="">Toggle Filters</a>
+		<a class="filters-toggle search" href="">Toggle Filters</a>
 		<div id="filters-list">
+			<a class="filters-toggle" href="">Toggle Filters</a>
 			{% for filter in work_filters %}
 				<div class="filter" name="{{filter.name}}">
 					{{ filter }}

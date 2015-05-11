@@ -24,6 +24,7 @@ var WI = { //WI stands for WorkInteractions
 	
 	filters_menu : false,
 	filter_list : new Array(),
+	techs_nb : 1000,
 	
 	work_list : new Array(),
 	
@@ -47,6 +48,7 @@ var WI = { //WI stands for WorkInteractions
 		
 		//Filters
 		WI.populateWorkList();
+		WI.techs_nb = $(".filter").length;
 		$( ".filters-toggle" ).on({
 			"click" : function( event ){
 				event.preventDefault();
@@ -131,16 +133,23 @@ var WI = { //WI stands for WorkInteractions
 			//remove Filter
 			WI.removeFilter( element );
 		}
-		else{
-			//Just append to the list
-			element.removeClass("disabled");
-			var filter_name = element.attr("name");
-			WI.filter_list.push( filter_name );
+		else{			
 			
-			//TODO if all filter selected : RESET
-		}
-		
-		console.log(WI.filter_list);		
+			//if all filter selected : RESET
+			if(WI.filter_list.length +1 >= WI.techs_nb) {
+				//RESET
+				$(".filter").removeClass("disabled");
+				WI.filter_list.length = 0;
+			}
+			else
+			{
+				//Just append to the list
+				element.removeClass("disabled");
+				var filter_name = element.attr("name");
+				WI.filter_list.push( filter_name );
+			}
+			
+		}	
 	},
 	
 	// Without forgetting to check that if last element got disabled then we reset
@@ -213,7 +222,6 @@ var WI = { //WI stands for WorkInteractions
 		$(".work-wrapper").each(function(){
 			var obj = new Work( $(this) );
 			WI.work_list.push( obj );
-			console.log(obj)
 		});
 	},
 	
