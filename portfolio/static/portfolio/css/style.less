@@ -11,6 +11,13 @@
     font-style: normal;
 }
 
+
+@import "section_work.less";
+/**********
+ * 
+ * 
+ *********/
+
 html, body{
 	height:100%;
 	width:100%;
@@ -29,7 +36,13 @@ header{
 		margin:0px 25px 5px 80px;
 		display:block;
 		float:left;
+		
+		a{
+			text-decoration:none;
+		}
 	}
+	
+
 	
 	/*Menu*/
 	
@@ -215,158 +228,7 @@ header{
 /*switch LOGIC*/
 
 
-@worksize:220px;
-@workmargin:40px;
-#mywork {
 
-	background:#FFF;
-	height:100%;
-
-	header{
-		
-		h1, nav.menu a{
-			color:#000;
-		}
-		
-		h1 span{
-			margin-left:25px;
-		}
-				
-		nav.menu a{
-			border: #777 1px solid;
-		}
-	}
-
-
-	#work-list{
-		clear:both;
-		padding-top:100px;
-		margin:0px 23% ;
-
-		.work-wrapper{
-		
-			display:block;
-			float:left;
-			width:@worksize;
-			height:@worksize;
-			margin-right:@workmargin;
-			margin-bottom:@workmargin;
-		
-			.work {
-				display:block;
-				position:relative;
-				
-				
-				height:100%;
-				width:100%;
-				float:left;
-				
-				cursor:pointer;
-				
-				background-size:contain;
-				
-
-				
-				@shadow_color:#ccc;
-				@blur_radius:10px;
-				/*cast shadow*/
-				-moz-box-shadow: 3px 3px @blur_radius @shadow_color;
-				-webkit-box-shadow: 3px 3px @blur_radius @shadow_color;
-				box-shadow: 3px 3px @blur_radius @shadow_color;
-				
-				.thumbnail img{
-					width:@worksize;
-					height:@worksize;
-				}		
-				
-				.details {
-					margin-top:20px;
-					background:rgba(255,255,255,0.8);
-					padding:10px;
-					
-					h1{
-						line-height:40px;
-						font-size:24px;
-					}
-				}
-			
-				.work-techs {
-					position:absolute;
-					right: -25px;
-					top: 10px;
-					
-					background: none repeat scroll 0 0 #fff;
-					border: 1px solid #aaa;
-					border-radius: 24px;
-					padding: 9px;
-
-					width: 32px;
-				}
-			}
-		}
-	}
-	
-
-
-
-
-
-	.work-full {
-		display:none;
-	}
-	
-	#filters {
-		position:absolute;
-		right:0px;
-		top:0px;
-		height:100%;
-		overflow-x: hidden;
-		
-		.filters-toggle.search{
-			width:45px;
-			height:45px;
-			margin-top:100px;
-			display:block;
-			background:#000;
-		}
-		
-		#filters-list{
-			position:absolute;
-			height:100%;
-			width:50px;
-			right:-50px;
-			top:0px;
-			background:#000;
-			color:#FFF;
-		}
-		
-		.filter img{
-			height:32px;
-			width:32px;
-			padding:8px;
-			cursor:pointer;
-			display:block;
-
-		}
-		.filter img.disabled{
-				display:none;
-		}
-		
-		.filter.disabled{
-			img.disabled{
-				display:block;
-			}
-			
-			img.enabled{
-				display:none;
-			}
-		}
-		
-	
-	}
-
-
-}
 
 #contact{
 	height:100%;

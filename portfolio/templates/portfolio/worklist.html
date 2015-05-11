@@ -34,16 +34,18 @@
 	
 	{% if work_filters %}
 	<div id="filters">
-		<a class="filters-toggle search" href="">Toggle Filters</a>
-		<div id="filters-list">
-			<a class="filters-toggle" href="">Toggle Filters</a>
-			{% for filter in work_filters %}
-				<div class="filter" name="{{filter.name}}">
-					{{ filter }}
-					<img class="enabled" src="{{ MEDIA_URL }}{{ filter.icon }}"/>
-					<img class="disabled" src="{{ MEDIA_URL }}{{ filter.icon_g }}"/>
-				</div>
-			{% endfor %}
+		<div style="width:100%; height:100%; overflow:hidden"> <!--android fix-->
+			<a class="filters-toggle search" href="">Toggle Filters</a>
+			<div id="filters-list">
+				<a class="filters-toggle" href="">Toggle Filters</a>
+				{% for filter in work_filters %}
+					<div class="filter" name="{{filter.name}}">
+						{{ filter }}
+						<img class="enabled" src="{{ MEDIA_URL }}{{ filter.icon }}"/>
+						<img class="disabled" src="{{ MEDIA_URL }}{{ filter.icon_g }}"/>
+					</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 	{% endif%}

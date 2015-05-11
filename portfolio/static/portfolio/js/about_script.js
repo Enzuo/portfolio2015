@@ -6,6 +6,8 @@ var A = {
 	init : function(){
 		
 		A.maxBarWidth = $(".skill-bar").first().width();
+		if(! A.maxBarWidth)
+			console.log("error");
 		A.createSkillsBarPercent();	
 	},
 	
