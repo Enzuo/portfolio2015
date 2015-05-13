@@ -121,14 +121,16 @@ var WI = { //WI stands for WorkInteractions
 	},
 	
 	rollDownFilterMenu : function() {
-		$("#filters-list").animate({
+		$("#filters-bar").animate({
 			right:"0px",
 		},250, function(){ WI.filters_menu = true; });
 	},
 	
 	rollUpFilterMenu : function() {
-		$("#filters-list").animate({
-			right:"-50px",
+		var widthValue = $("#filters").width(); 
+		widthValue = "-"+widthValue+"px"
+		$("#filters-bar").animate({
+			right:widthValue,
 		},250, function(){ WI.filters_menu = false; });
 	},
 	
