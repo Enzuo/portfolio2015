@@ -64,6 +64,12 @@ var WI = { //WI stands for WorkInteractions
 			}
 		});
 		
+		$( ".filters-reset" ).on("click",function(event){
+			event.preventDefault();
+			WI.resetFilters();
+			WI.applyFilters();
+		});
+		
 		$("#filters-list").on("click",".filter",function(){	
 			WI.addFilter( $( this ) );
 			WI.applyFilters();
@@ -115,7 +121,7 @@ var WI = { //WI stands for WorkInteractions
 				var e = $(this);
 				setTimeout(function(){
 					WI.popObject( e );
-				},i*250);
+				},i*450);
 			}	
 		)
 	},
@@ -159,8 +165,7 @@ var WI = { //WI stands for WorkInteractions
 			//if all filter selected : RESET
 			if(WI.filter_list.length +1 >= WI.techs_nb) {
 				//RESET
-				$(".filter").removeClass("disabled");
-				WI.filter_list.length = 0;
+				WI.resetFilters();
 			}
 			else
 			{
@@ -171,6 +176,11 @@ var WI = { //WI stands for WorkInteractions
 			}
 			
 		}	
+	},
+	
+	resetFilters : function(){
+		$(".filter").removeClass("disabled");
+		WI.filter_list.length = 0;
 	},
 	
 	// Without forgetting to check that if last element got disabled then we reset
