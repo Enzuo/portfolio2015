@@ -14,7 +14,9 @@
 
 @import "section_work.less";
 /**********
- * 
+ * This file is all about main structures
+ * Positions of elements toward each others
+ * Nothing concerning color, style unless it contributes to the sizing.
  * 
  *********/
 
@@ -44,20 +46,41 @@ header{
 	
 
 	
-	/*Menu*/
+	/**
+	 * Menu structure
+	 * */
 	
-	nav.menu{
-		display:block;
-		float:right;
-		margin:5px
+	@media (min-width: 720px){
+		nav.menu{
+			display:block;
+			float:right;
+			margin:5px
+		}
+		
+		nav.menu a{
+			text-decoration: none;
+			padding:3px 20px;
+			border: #747474 1px solid;
+			margin-right:55px;
+			white-space: nowrap;
+		}
 	}
 	
-	nav.menu a{
-		text-decoration: none;
-		padding:3px 20px;
-		border: #747474 1px solid;
-		margin-right:55px;
-		white-space: nowrap;
+	@media (max-width: 720px){
+		nav.menu{
+			display:block;
+			float:left;
+			margin:5px
+		}
+		
+		nav.menu a{
+			display:block;
+			text-decoration: none;
+			padding:20px 20px;
+			margin-right:55px;
+			white-space: nowrap;
+			width:100%;
+		}
 	}
 }
 
@@ -76,7 +99,7 @@ header{
 		}
 					
 		nav.menu a{
-			border: #747474 1px solid;
+			border-color: #747474;
 		}
 	}
 	
