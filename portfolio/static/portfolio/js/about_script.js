@@ -9,6 +9,11 @@ var A = {
 		if(! A.maxBarWidth)
 			console.log("error");
 		A.createSkillsBarPercent();	
+		
+		$( window ).resize(function() {
+			A.maxBarWidth = $(".skill-bar").first().width();
+			A.createSkillsBarPercent();	
+		});
 	},
 	
 	createSkillsBarRelative : function(){		

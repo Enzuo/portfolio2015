@@ -13,10 +13,10 @@
 
 
 @import "section_work.less";
+@import "section_main.less";
 /**********
  * This file is all about main structures
  * Positions of elements toward each others
- * Nothing concerning color, style unless it contributes to the sizing.
  * 
  *********/
 
@@ -26,13 +26,16 @@ html, body{
 	background: #555;
 	font-family: 'source_sans_proregular';
 }
-/* Common header */
+
+/* ****************
+ * 
+ * Common header : contains the title and nav menu
+ * 
+ * ***************/
 header{
 	
 	padding-top:50px;
 	
-	/*Title*/
-
 	h1{
 		font-size:2em;
 		margin:0px 25px 5px 80px;
@@ -44,99 +47,87 @@ header{
 		}
 	}
 	
+	
+	@media (max-width: 520px), (max-height: 320px){
+		
+			padding-top:20px;
+		
+			h1{
+				font-size:1.7em;
+				margin-left:20px;
+			}
+	}
+	
+	
+	/************************
+	 * 
+	 * Menu base structure
+	 * 
+	 * *********************/
+	@media (min-width: 721px){
+	
 
-	
-	/**
-	 * Menu structure
-	 * */
-	
-	@media (min-width: 720px){
+		
 		nav.menu{
 			display:block;
 			float:right;
-			margin:5px
-		}
-		
-		nav.menu a{
-			text-decoration: none;
-			padding:3px 20px;
-			border: #747474 1px solid;
-			margin-right:55px;
-			white-space: nowrap;
+			margin:5px;
+
+	
+			a{
+				text-decoration: none;
+				padding:3px 20px;
+				border: #747474 1px solid;
+				margin-right:55px;
+				white-space: nowrap;
+			}
 		}
 	}
 	
 	@media (max-width: 720px){
+
+	
 		nav.menu{
-			display:block;
-			float:left;
-			margin:5px
+			display:none;
 		}
+	}
+	
+	
+}	
+
+/**********************************************
+ * 
+ * Fast Travel Links, replace menu on small screens
+ * 
+ * *********************************************/
+
+@media (min-width: 721px){
+	.mobile-link{
+		display:none;
+	}
+}	
+@media (max-width: 720px){
+	.mobile-link{
+		display:block;
+		width:100%;
 		
-		nav.menu a{
-			display:block;
-			text-decoration: none;
-			padding:20px 20px;
-			margin-right:55px;
-			white-space: nowrap;
-			width:100%;
-		}
+		margin:30px 0;
+		padding:20px 0;
+		
+		text-align:center;
+		text-decoration:none;
 	}
 }
 
-#main {
-	height:100%;
-	width:100%;
-	
-	background:url(../img/main_bck.jpg);
-	background-size:   cover; 
-	
-	/* Menu Color */
-	header{
-		
-		h1, nav.menu a{
-			color:#FFF;
-		}
-					
-		nav.menu a{
-			border-color: #747474;
-		}
+@media (max-height: 480px){
+	.mobile-link{
+		margin:0;
+		padding:20px 0;
 	}
-	
-	/*Quote*/
-	.welcome-msg{
-		clear:both;
-		position:relative;
-		top:25%;
-		width:100%;
-		text-align:center;
-		color:#BBB;
-		font-size:1.6em;
-		line-height: 135%;
-	}
-	
-	.welcome-msg span.w{
-		color:#FFF;
-	}
-	span.big{
-		font-size:1.7em;
-	}
-	
-	/* Languages */
-	nav.language{
-		position:absolute;
-		bottom:25px;
-		right:95px;
-	}
-	nav.language a{
-		text-decoration: none;
-		color:#CCC;
-		margin-right:25px;
-	}
-	
-	nav.language a:hover{
-		color:#FFF;
-	}
+}
+
+.arrow-right:after {
+    content:'\25BA'
 }
 
 #about {
@@ -152,7 +143,12 @@ header{
 	img{
 		margin-right:50px;
 		margin-bottom:40px;
-		max-width:50%;
+		@media (max-width: 720px){
+			width:100%;
+		}
+		@media (min-width: 721px){
+			max-width:50%;
+		}
 	}
 	
 	p{
@@ -190,7 +186,7 @@ header{
 		margin: 8px 0;
 		
 		h2{
-			width:280px;
+			width:30%;
 			text-align:right;
 			line-height:32px;
 			display:block;
@@ -202,14 +198,26 @@ header{
 			display:block;
 			float:left;
 			height:32px;
-			width:500px;
+			width:60%;
 			border-left:1px solid #444;
+			overflow: hidden;
 			
 			.bar{
 				height:4px;
 				margin: 14px 0;
 				float:left;
 				background: #6598c5;
+			}
+		}
+		
+		@media (max-width: 720px){
+			h2{
+				width:100%;
+				text-align:left;
+			}
+			
+			.skill-bar{
+				width:100%;
 			}
 		}
 	}
@@ -271,6 +279,7 @@ header{
 		
 		input, textarea {
 			background:#eee;
+			max-width:100%;
 		}
 		
 		form p{
@@ -281,17 +290,28 @@ header{
 				display:inline-block;
 				text-align:right;
 				margin-right:10px;
+				
+				@media (max-width:720px){
+					width:100%;
+					text-align:left;
+				}
 			}
 		}
 	}
 	
+	
+	
 	footer {
+
 		position:absolute;
 		bottom:0px;
 		left:0px;
 		text-align:center;
 		width:100%;
 		
+		@media (max-width:720px){
+			position:relative;
+		}
 		p {
 			 display:inline-block;
 			 line-height:32px;
@@ -307,12 +327,13 @@ header{
 	
 	
 }
-
+/*
 .hided{
 	opacity:0;
 }
-
+*/
 /* work scroll */
+/*
 .viewport {
 	height:200px;
 }
@@ -329,4 +350,4 @@ header{
     -webkit-user-select: none;
     -o-user-select: none;
     user-select: none;
-}
+}*/
