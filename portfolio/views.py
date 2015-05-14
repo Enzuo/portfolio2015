@@ -13,7 +13,11 @@ from portfolio.forms import ContactForm
 
 def view_index(request):
 	
-	aboutme = Article.objects.get(pk=1)
+	try:
+		aboutme = Article.objects.get(pk=1)
+	except:
+		aboutme = None
+	
 	tags = Tag.objects.all();
 	
 	#Contact form
@@ -57,8 +61,9 @@ def index(request):
 	
 	works = Work.objects.all()
 	
+	"""
 	w = works[0]
-	title = w.title
+	title = w.title"""
 	
 	techs = Tech.objects.all()
 	
@@ -71,7 +76,6 @@ def index(request):
 	
 	context = RequestContext(request,{
 		'works' : works,
-		'wtitle' : title,
 		'work_filters' : techs,
 		'aboutme' : aboutme,
 	})
