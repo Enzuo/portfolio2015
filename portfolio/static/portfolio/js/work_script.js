@@ -45,15 +45,19 @@ var WI = { //WI stands for WorkInteractions
 			},
 		});
 		
-		//Call work objects pop
-		WI.popWorkObjects();
+		
 		
 		//If small screen < 520
 		var w = $( window ).width();
 		if( w <= 520 ){
+			WI.popWorkObjects( false );
 			$(".thumbnail img").lazyload({
 				skip_invisible : true,
-			});
+			});	
+		}
+		else {
+			//Call work objects pop
+			WI.popWorkObjects( true );
 		}
 		
 		//Filters
@@ -123,15 +127,21 @@ var WI = { //WI stands for WorkInteractions
 			}, 700);	
 	},
 	
-	popWorkObjects : function() {
-		$( ".work" ).each(
-			function(i){
-				var e = $(this);
-				setTimeout(function(){
-					WI.popObject( e );
-				},i*450);
-			}	
-		)
+	popWorkObjects : function( animation ) {
+		if( animation ){
+			$( ".work" ).each(
+				function(i){
+					var e = $(this);
+					setTimeout(function(){
+						WI.popObject( e );
+					},i*450);
+				}	
+			)
+		}
+		else
+		{
+			$( ".work" ).css({'opacity': 1 });
+		}
 	},
 	
 	rollDownFilterMenu : function() {

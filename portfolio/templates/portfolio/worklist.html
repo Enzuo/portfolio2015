@@ -25,8 +25,19 @@
 				</section>
 				
 				<section class="work-full">
-					<h1>{{ w.title }}</h1>
-					{{ w.content |safe}}
+					<div class="work-content">
+						<h1>{{ w.title }}</h1>
+
+						{{ w.content |safe}}						
+						<div class="techs">
+							{% for t in w.techs.all %}
+							<div class="tech" name="{{t.name}}">
+								{{ t.icon_32 }}
+								<p>{{t.name}}</p>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
 				</section>
 			</div>	
 		</div>		
