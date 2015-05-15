@@ -2,12 +2,14 @@
 	<div id="work-list">
 		{% for w in works %}
 		<div class="work-wrapper" >
-			<div class="work" id="work-{{ w.id }}" style="opacity:0; background-image:url({{ MEDIA_URL }}{{ w.image }})">
-				{% if false %}
+			<div class="work" id="work-{{ w.id }}" style="opacity:0;">
 				<section class="thumbnail">
-					<img src="{{ MEDIA_URL }}{{ w.image }}"/>
+					{% if w.thumb %}
+						<img src="{{ MEDIA_URL }}{{ w.thumb }}" data-original="{{ MEDIA_URL }}{{ w.image }}"/>
+					{% else %}
+						<img src="{{ MEDIA_URL }}{{ w.image }}" />
+					{% endif %}
 				</section>
-				{% endif %}
 				
 				<section class="details" style="display:none">
 					<h1>{{ w.title }}</h1>

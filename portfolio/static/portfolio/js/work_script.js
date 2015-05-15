@@ -48,6 +48,14 @@ var WI = { //WI stands for WorkInteractions
 		//Call work objects pop
 		WI.popWorkObjects();
 		
+		//If small screen < 520
+		var w = $( window ).width();
+		if( w <= 520 ){
+			$(".thumbnail img").lazyload({
+				skip_invisible : true,
+			});
+		}
+		
 		//Filters
 		WI.populateWorkList();
 		WI.techs_nb = $(".filter").length;

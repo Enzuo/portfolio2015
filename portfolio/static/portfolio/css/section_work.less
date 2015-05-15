@@ -24,7 +24,6 @@
 		color:#aaa;
 		
 		clear: both;
-		display: block;
 		padding-left: 50px;
 		text-align: left;
 	}
@@ -91,6 +90,11 @@
 				-webkit-box-shadow: 3px 3px @blur_radius @shadow_color;
 				box-shadow: 3px 3px @blur_radius @shadow_color;
 				
+				.thumbnail{
+					position: absolute;
+					width: 100%;
+					height:100%;
+				}
 				.thumbnail img{
 					width:100%;
 					height:100%;
@@ -150,9 +154,12 @@
 			height:45px;
 			margin-top:100px;
 			display:block;
-			background: url("../img/search.png") #000;
+			background: url("../img/search.png") #000 center;
 			float:right;			
 			text-indent: -9999px;
+			border-radius: 8px 0 0 8px;
+			background-size: 22px 22px;
+			background-repeat: no-repeat;
 		}
 		
 		#filters-bar .filters-toggle, .filters-reset{

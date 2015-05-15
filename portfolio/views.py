@@ -58,6 +58,7 @@ def view_work(request):
 	return render(request, 'portfolio/view_work.html', context)
 
 def index(request):
+	return view_index(request)
 	
 	works = Work.objects.all()
 	

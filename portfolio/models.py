@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.html import format_html
 from django.conf import settings
@@ -67,6 +68,7 @@ class Work(models.Model):
 	date = models.DateField()
 	
 	image = models.ImageField(upload_to = 'images/thumb/', blank=True)
+	thumb = models.ImageField(upload_to = 'images/thumb/', blank=True)
 	
 	techs = models.ManyToManyField(Tech, blank=True)
 	tags = models.ManyToManyField(Tag, blank=True)
@@ -88,11 +90,62 @@ class Work(models.Model):
 		
 		return format_html(flags)
 		
-class Article(models.Model):
-	title = models.CharField(max_length=200)
-	content = models.TextField()
-	
-	def translated_in(self):
+		
+	def save(self, *args, **kwargs):
+		if has_changed(self, 'image'):
+			# on va convertir l'image en jpg
+			filename = os.path.splitext(os.path.split(self.image.name)[-1])[0]
+			filename = "%s.jpg" % filename
+
+			image = Image.open(self.image.file)
+
+			if image.mode not in ('L', 'RGB'):
+				image = image.convert('RGB')
+
+			# d'abord la photo elle-même
+			self.image.save(
+					filename,
+					create_thumb(image, settings.WORK_IMAGE_SIZE),
+					save=False)
+
+			# puis le thumbnail
+			self.thumb.save(
+					'_%s' % filename,
+					create_thumb(image, settings.WORK_THUMB_SIZE),
+					save=False)
+		
+		
+		super(Work, self).save(*args, **kwargs)
+
+		
+
+		
+"""--------------------------
+"
+"	Utils functions
+"
+"--------------------------"""
+def create_thumb(image, size):
+    """Returns the image resized to fit inside a box of the given size"""
+    image.thumbnail(size, Image.ANTIALIAS)
+    temp = StringIO()
+    image.save(temp, 'jpeg')
+    temp.seek(0)
+    return SimpleUploadedFile('temp', temp.read())
+    
+def has_changed(instance, field, manager='objects'):
+    """Returns true if a field has changed in a model
+
+    May be used in a model.save() method.
+
+    """
+    if not instance.pk:
+        return True
+    manager = getattr(instance.__class__, manager)
+    old = getattr(manager.get(pk=instance.pk), field)
+    return not getattr(instance, field) == old
+
+def translated_check(self):
 		flags = ""
 		if len(self.content_zh) > 1:
 			flags += '<img style="height:20px; width:32px; margin:4px" src="'+settings.STATIC_URL +'portfolio/img/flags/zh.png"/>'
@@ -102,3 +155,9 @@ class Article(models.Model):
 			flags += '<img style="height:20px; width:32px; margin:4px" src="'+settings.STATIC_URL +'portfolio/img/flags/en.png"/>'
 		
 		return format_html(flags)
+		
+class Article(models.Model):
+	title = models.CharField(max_length=200)
+	content = models.TextField()
+	
+	translated_in = translated_check
