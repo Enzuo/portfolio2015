@@ -1,0 +1,29 @@
+{% extends 'portfolio/base.html' %}
+{% load i18n %} 
+{% load static %} 
+
+{% block view_block %}
+
+	<style>
+		html, body{
+			background:#FFF;
+		}
+		.wechat-inner{
+			width:100%;
+			height:100%;
+			text-align:center;
+		}
+		.wechat-qr{
+			max-height:80%;
+		}
+	</style>
+	</head>
+	<body>
+		<div class="wechat-inner">
+			<img class="wechat-qr" src="{% static 'portfolio/img/wechat_qr.png' %}" />
+			<p>{% trans "Scan the QR code to add me on wechat" %}</p>
+			<p><a href="{% url 'index' %}#contact">go Back</a></p>
+		</div>
+
+		
+{% endblock %}

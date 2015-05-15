@@ -10,6 +10,8 @@ from portfolio.models import Work, Tech, Article, Tag
 from portfolio.forms import ContactForm
 
 
+def wechat(request):
+	return render(request, 'portfolio/view_wechat.html')
 
 def view_index(request):
 	
@@ -34,8 +36,9 @@ def view_index(request):
 			try:
 				send_mail(subject, message+" from "+name, from_email, ['potc.zone@gmail.com'])
 			except BadHeaderError:
-				return HttpResponse('Invalid header found.')
-			return redirect('thanks')
+				pass
+			#	return HttpResponse('Invalid header found.')
+			#return redirect('thanks')
 	
 	context = {
 		'aboutme' : aboutme,

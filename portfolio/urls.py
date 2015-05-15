@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^work$', views.view_work, name='work'),
 	#url(r'^(?P<pk>[0-9]+)/', views.DetailView.as_view(), name='detail')
 	url(r'lang/(?P<lang_code>\D+)/', views.languageSelect, name='language'),
+	url(r'^wechat/$', views.wechat, name='wechat'),
 	#url(r'lang/fr/', views.languageSelect, name='language'),
 )

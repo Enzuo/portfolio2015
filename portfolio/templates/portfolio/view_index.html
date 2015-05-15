@@ -7,6 +7,20 @@
 	</head>
 	<body>
 		
+		<div class="preloader">
+			<div class="container">
+				<img src="{% static 'portfolio/img/wechat.png' %}" />
+			</div>
+		</div>
+		<script>
+		jQuery(window).load( function() {
+			setTimeout( function() {
+				jQuery(".preloader").delay(500).fadeOut(1000);
+			}, 1000 );
+		});
+		
+		</script>
+		
 		{% include "portfolio/section_main.html" %}
 		{% include "portfolio/section_about.html" %}
 		{% include "portfolio/section_contact.html" %}
