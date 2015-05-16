@@ -14,6 +14,35 @@ var A = {
 			A.maxBarWidth = $(".skill-bar").first().width();
 			A.createSkillsBarPercent();	
 		});
+		
+		/* SVG */
+		window.onload=function() {					
+			
+			var a = document.getElementById("ħobbies-svg");
+			var svgDoc = a.contentDocument;
+			
+			if(svgDoc){
+				$("#hobbies-legend li").each(function(){
+				
+					var legend = $(this);
+					var tar = legend.attr("tar");
+					var txt = legend.html();
+					
+					// Get one of the SVG items by ID;
+					var svgItem = svgDoc.getElementById(tar+"_txt");
+					if(svgItem){
+						var tspan = svgItem.getElementsByTagName('tspan');
+						if(tspan && tspan[0]){
+							tspan[0].innerHTML = txt;
+							tspan[0].style.fill = "#FFF";
+						}
+					}
+					
+				});
+			}
+		}
+		
+		
 	},
 	
 	createSkillsBarRelative : function(){		

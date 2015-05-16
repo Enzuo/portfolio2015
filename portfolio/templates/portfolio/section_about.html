@@ -26,7 +26,17 @@
 	<article>
 		<h1>{% trans "My hobbies" %}</h1>
 		<div class="hobbies">
-			<img src="{% static 'portfolio/img/hobbies.png' %}"/>
+			<object id="ħobbies-svg" type="image/svg+xml" data="{% static 'portfolio/img/hobbies.svg' %}"><img src="{% static 'portfolio/img/hobbies.png' %}"/>Your browser does not support SVG</object>
+		
+			<ul id="hobbies-legend" style="display:none">
+				<li tar="skate">{% trans "Cruising around" %}</li>
+				<li tar="camera">{% trans "Photography" %}</li>
+				<li tar="computer">{% trans "Video games" %}</li>
+				<li tar="travel">{% trans "Travel & Languages" %}</li>
+				<li tar="pads">{% trans "Playing pads sports" %}</li>
+				<li tar="drawing">{% trans "Drawing rabbits" %}</li>		
+			</ul>
+		
 		</div>
 	</article>
 </section>
