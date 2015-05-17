@@ -9,8 +9,8 @@ urlpatterns = [
     
     url(r'^admin/', include(admin.site.urls)),  
     url(r'^redactor/', include('redactor.urls')),
-    url(r'^$', include('portfolio.urls')),
-    url(r'/*', include('portfolio.urls')),
+    #url(r'^$', include('portfolio.urls')),
+    url(r'^', include('portfolio.urls')),
 
 ]
 

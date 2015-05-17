@@ -2,13 +2,24 @@
 
 <section id="mywork">
 	<header>
-		<h1><a href="index">Enzo Ghemard </a><span>{% trans "work" %}</span></h1>
+		<h1><a href="{% url 'index' %}">Enzo Ghemard </a><span>{% trans "work" %}</span></h1>
 		<nav class="menu">
-			<a href="index#about">{% trans "about me" %}</a>
-			<a href="index#contact">{% trans "contact" %}</a>
+			<a href="{% url 'index' %}#about">{% trans "about me" %}</a>
+			<a href="{% url 'index' %}#contact">{% trans "contact" %}</a>
 		</nav>
 	</header>
-	<a class="mobile-link" href="index">go back</a>
+	<a class="mobile-link" href="{% url 'index' %}">go back</a>
+
+	{% if tags %}
+	<div id="tags-filters">
+		<ul>
+		{% for t in tags %}
+			<li data="{{t.id}}" {%if t.active %}class="active"{% endif %}>{{t.name}}</li>
+		{% endfor %}
+		</ul>
+	</div>	
+	{% endif %}
+	
 	<div id="work-viewer" style="display:none">
 		<div class="background"></div>
 		<div class="content-viewer">
@@ -16,5 +27,9 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	{% include "portfolio/worklist.html" %}
+	
+	
 </section>

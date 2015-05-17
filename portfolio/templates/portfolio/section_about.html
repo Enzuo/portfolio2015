@@ -16,7 +16,9 @@
 		
 		{% for skill in tags %}
 			<div class="skill" value="{{ skill.level }}">
-				<h2>{{skill.name}}</h2><div class="skill-bar" ><div class="bar"></div></div>
+				<a href="{% url 'work' skill.id %}">
+					<h2>{{skill.name}}</h2><div class="skill-bar" ><div class="bar"></div></div>
+				</a>
 			</div>
 		{% endfor %}
 		

@@ -48,14 +48,25 @@ def view_index(request):
 	
 	return render(request, 'portfolio/view_index.html', context)
 
-def view_work(request):
+def view_work(request, tag_id=0):
 	
 	works = Work.objects.all()
 	techs = Tech.objects.all()
+	tags = Tag.objects.all()
+	
+	if(tag_id):
+		works = works.filter(tags=tag_id);
+		for t in tags:
+			if t.id == int(tag_id):
+				#return HttpResponse("Bobby" + str(type(tag_id)) + " " + str(tag_id))
+				t.active = True
+				
 	
 	context = {
 		'works' : works,
 		'work_filters' : techs,
+		'tags' : tags,
+		'tags_selected' : tag_id,
 	}
 	
 	return render(request, 'portfolio/view_work.html', context)
