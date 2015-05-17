@@ -7,6 +7,7 @@
 			<a href="{% url 'index' %}#about">{% trans "about me" %}</a>
 			<a href="{% url 'index' %}#contact">{% trans "contact" %}</a>
 		</nav>
+		<div style="clear:both"></div>
 	</header>
 	<a class="mobile-link" href="{% url 'index' %}">go back</a>
 
@@ -28,8 +29,29 @@
 		</div>
 	</div>
 	
+	<div id="work-list-wrapper">
+		{% comment %}{% include "portfolio/worklist.html" %}{% endcomment %}
+	</div>
 	
-	{% include "portfolio/worklist.html" %}
-	
+	{% if work_filters %}
+	<div id="filters">
+		<!--<div style="width:100%; height:100%; overflow:hidden"> android fix-->
+			<a class="filters-toggle search" href="">Toggle Filters</a>
+			<div id="filters-bar">
+				<a class="filters-toggle" href="">Close</a>
+				<div id="filters-list">
+					{% for filter in work_filters %}
+						<div class="filter" name="{{filter.name}}">
+							
+							<img class="enabled" src="{{ MEDIA_URL }}{{ filter.icon }}" title="{{ filter.name }}" />
+							<img class="disabled" src="{{ MEDIA_URL }}{{ filter.icon_g }}" title="{{ filter.name }}" />
+						</div>
+					{% endfor %}
+				</div>
+				<a class="filters-reset" href="">Reset</a>
+			</div>
+		<!--</div>-->
+	</div>
+	{% endif%}
 	
 </section>

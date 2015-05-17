@@ -26,28 +26,23 @@ var WI = { //WI stands for WorkInteractions
 	filter_list : new Array(),
 	techs_nb : 1000,
 	
+	tags_filter_list : new Array(),
+	
 	work_list : new Array(),
 	
 	workview : false,
 	
 	init : function() {
-	
-	
-		//Add the listeners for .work objects	
-		$( ".work" ).on({
 			
-			"mouseover" : function(){
-				WI.displayDetails( $(this) );
-			},
-			
-			"mouseout" : function(){
-				WI.hideDetails( $(this) );
-			},
-		});
-		
-		
 		
 		//If small screen < 520
+		/*var w = $( window ).width();
+		if( w <= 520 ){
+			$(".thumbnail img").lazyload({
+				skip_invisible : true,
+			});	
+		}*/
+		/*
 		var w = $( window ).width();
 		if( w <= 520 ){
 			WI.popWorkObjects( false );
@@ -58,9 +53,13 @@ var WI = { //WI stands for WorkInteractions
 		else {
 			//Call work objects pop
 			WI.popWorkObjects( true );
-		}
+		}*/
 		
-		//Filters
+		/*************************************
+		 * 
+		 * SET UP Techs filters
+		 * 
+		 * **********************************/
 		WI.populateWorkList();
 		WI.techs_nb = $(".filter").length;
 		$( ".filters-toggle" ).on({
@@ -87,6 +86,38 @@ var WI = { //WI stands for WorkInteractions
 			WI.applyFilters();
 		});
 		
+		
+		/*************************************
+		 * 
+		 * SET UP Tags filters
+		 * 
+		 * **********************************/
+		$("#tags-filters").on("click", "li", function(){
+			var tag = $(this);
+			var tag_id = tag.attr("data");
+			tag.toggleClass("active");
+			
+			//Has changed so prepare to do AJAX
+			WI.loadWorkList();
+		});
+	},
+	
+	
+	setupWorkObjectsInteractions : function(){	
+			
+		//Add the listeners for .work objects	
+		$( ".work" ).on({
+			
+			"mouseover" : function(){
+				WI.displayDetails( $(this) );
+			},
+			
+			"mouseout" : function(){
+				WI.hideDetails( $(this) );
+			},
+		});
+			
+
 		//Set up work view
 		WI.workview = $("#work-viewer");
 		
@@ -99,6 +130,46 @@ var WI = { //WI stands for WorkInteractions
 			WI.workview.hide();
 		});
 	},
+	
+	
+	/***************************************
+	 * 
+	 * AJAX Loading functions
+	 * 
+	 * ************************************/
+	 
+	loadWorkList : function(){
+		//get tags filters
+		console.log($("#tags-filters li.active"));
+		console.log($("#tags-filters li.active").attr("data"));
+		//The .attr() method gets the attribute value for only the first element in the matched set. To get the value for each element individually, use a looping construct such as jQuery's .each() or .map() method.
+		//var tagsfilters = new Array();
+		var tagsFilters = $("#tags-filters li.active").map(function() { return $(this).attr("data")}).get().join("_");
+		console.log(tagsFilters);
+		
+		$.getJSON("/worklist/", { tags:tagsFilters }, function(json){
+			console.log("Was successful?: " + json['success']);
+			console.log(json);
+			$("#work-list-wrapper").html(json['html']);			
+			
+			WI.populateWorkList();
+			WI.applyFilters();
+			WI.popWorkObjects( true );
+			WI.setupWorkObjectsInteractions();
+
+		});
+	},
+	
+	loadWorkDetails : function(){
+	
+	},
+	
+	
+	/*********************************
+	 * 
+	 * Work objects functions
+	 * 
+	 * ******************************/
 	
 	displayWorkView : function( content ){
 		WI.workview.find(".content").html(content);
@@ -128,6 +199,17 @@ var WI = { //WI stands for WorkInteractions
 	},
 	
 	popWorkObjects : function( animation ) {
+		//If small screen < 520
+		var w = $( window ).width();
+		if( w <= 520 ){
+			animation = false;
+			$(".thumbnail img").lazyload({
+				skip_invisible : true,
+			});	
+		}
+		
+		
+		
 		if( animation ){
 			$( ".work" ).each(
 				function(i){
@@ -144,6 +226,13 @@ var WI = { //WI stands for WorkInteractions
 		}
 	},
 	
+	
+	/**********************************
+	 * 
+	 * Techs filter functions
+	 * 
+	 * ********************************/
+	 
 	rollDownFilterMenu : function() {
 		$("#filters-bar").animate({
 			right:"0px",
@@ -268,6 +357,9 @@ var WI = { //WI stands for WorkInteractions
 	},
 	
 	populateWorkList : function(){
+		
+		WI.work_list.length = 0;
+		
 		$(".work-wrapper").each(function(){
 			var obj = new Work( $(this) );
 			WI.work_list.push( obj );
@@ -280,4 +372,8 @@ var WI = { //WI stands for WorkInteractions
 
 
 
-$( document ).ready( WI.init );
+$( document ).ready( function(){
+	WI.init();
+	WI.loadWorkList();
+	
+});

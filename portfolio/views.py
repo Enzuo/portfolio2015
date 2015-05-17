@@ -1,3 +1,4 @@
+import json
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
@@ -50,26 +51,65 @@ def view_index(request):
 
 def view_work(request, tag_id=0):
 	
-	works = Work.objects.all()
+	#works = Work.objects.all()
 	techs = Tech.objects.all()
 	tags = Tag.objects.all()
 	
 	if(tag_id):
-		works = works.filter(tags=tag_id);
+		#works = works.filter(tags=tag_id);
 		for t in tags:
 			if t.id == int(tag_id):
-				#return HttpResponse("Bobby" + str(type(tag_id)) + " " + str(tag_id))
 				t.active = True
 				
 	
 	context = {
-		'works' : works,
+		#'works' : works,
 		'work_filters' : techs,
 		'tags' : tags,
 		'tags_selected' : tag_id,
 	}
 	
 	return render(request, 'portfolio/view_work.html', context)
+
+def worklist(request):
+	results = {'success':False}
+	if request.method == 'GET':
+		GET = request.GET
+        if GET.has_key(u'tags'):
+			tagsRaw = GET[u'tags']
+			
+			# Query Works object
+			works = Work.objects.all()
+			
+			if(len(tagsRaw)):
+				tags = tagsRaw.split('_')
+				results = {'success':True, 'data':tags}
+			
+			
+			
+			
+				#create Q Object
+				from django.db.models import Q
+				tags_filter = Q()
+				
+				
+				
+				for tag in tags:
+					q = Q(tags = tag)
+					tags_filter = tags_filter | q
+					
+				works = works.filter( tags_filter ).distinct()
+			
+			context = RequestContext(request,{
+				'works' : works,
+			});
+			
+			from django.template.loader import render_to_string
+			
+			results['html'] = render_to_string('portfolio/worklist.html', context)
+			
+	return HttpResponse(json.dumps(results), content_type = "application/json")
+	
 
 def index(request):
 	return view_index(request)
