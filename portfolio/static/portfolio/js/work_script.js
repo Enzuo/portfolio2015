@@ -32,6 +32,8 @@ var WI = { //WI stands for WorkInteractions
 	
 	workview : false,
 	
+	ajaxTimer : false,
+	
 	init : function() {
 			
 		
@@ -139,23 +141,44 @@ var WI = { //WI stands for WorkInteractions
 	 * ************************************/
 	 
 	loadWorkList : function(){
-		//get tags filters
-		console.log($("#tags-filters li.active"));
-		console.log($("#tags-filters li.active").attr("data"));
-		//The .attr() method gets the attribute value for only the first element in the matched set. To get the value for each element individually, use a looping construct such as jQuery's .each() or .map() method.
-		//var tagsfilters = new Array();
+		//set preloader
+		$("#work-list-wrapper").html( '<div class="loader">loading...</div>' );
+
 		var tagsFilters = $("#tags-filters li.active").map(function() { return $(this).attr("data")}).get().join("_");
-		console.log(tagsFilters);
 		
-		$.getJSON("/worklist/", { tags:tagsFilters }, function(json){
-			console.log("Was successful?: " + json['success']);
-			console.log(json);
-			$("#work-list-wrapper").html(json['html']);			
+		if(WI.ajaxTimer){
+			clearTimeout(WI.ajaxTimer);
+			WI.ajaxTimer = setTimeout(function(){
 			
-			WI.populateWorkList();
-			WI.applyFilters();
-			WI.popWorkObjects( true );
-			WI.setupWorkObjectsInteractions();
+				WI.ajaxWorkList( tagsFilters );
+			
+			},1000);
+		}
+		else {
+			console.log("DIRECT LOAD");
+			WI.ajaxWorkList( tagsFilters );
+			WI.ajaxTimer = true;
+		}
+	},
+	
+	ajaxWorkList : function( tagsFilters ){				
+		
+		$.ajax({
+			url:"/worklist/", 
+			data:{ tags:tagsFilters }, 
+			dataType: "json",
+			success: function(json){
+
+				$("#work-list-wrapper").html(json['html']);			
+				
+				WI.populateWorkList();
+				WI.applyFilters();
+				WI.popWorkObjects( true );
+				WI.setupWorkObjectsInteractions();
+			},
+			failure: function(){
+				console.log("ajax error");
+			}
 
 		});
 	},
