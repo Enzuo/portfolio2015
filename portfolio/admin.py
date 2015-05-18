@@ -19,11 +19,14 @@ class WorkAdminForm(forms.ModelForm):
 		model = Work
 		widgets = {
 		   'content_en': RedactorEditor(),
+           'techs': forms.SelectMultiple(attrs={'size': 12}),
 		}
 		fields = '__all__'
 
 class WorkAdmin(admin.ModelAdmin):
-	list_display = ('title', 'used_techs','translated_in')
+	#formfield_overrides = { models.ManyToManyField: {'widget': SelectMultiple(attrs={'size':'10'})}, }
+
+	list_display = ('title', 'used_techs','translated_in', 'used_tags', 'date')
 	form = WorkAdminForm
 	
 class ArticleAdmin(admin.ModelAdmin):

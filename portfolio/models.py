@@ -79,6 +79,9 @@ class Work(models.Model):
 	def used_techs(self):
 		return format_html("".join([p.icon_32() for p in self.techs.all()]))
 		
+	def used_tags(self):
+		return format_html("".join([p.name for p in self.tags.all()]))
+		
 	def translated_in(self):
 		flags = ""
 		if len(self.content_zh) > 1:

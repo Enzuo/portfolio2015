@@ -99,6 +99,8 @@ def worklist(request):
 					tags_filter = tags_filter | q
 					
 				works = works.filter( tags_filter ).distinct()
+				
+			works = works.order_by('-date')
 			
 			context = RequestContext(request,{
 				'works' : works,
