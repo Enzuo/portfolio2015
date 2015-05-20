@@ -4,9 +4,9 @@
 	<header>
 		<h1>Enzo Ghemard</h1>
 		<nav class="menu">
-			<a href="work">work</a>
-			<a href="#about">about me</a>
-			<a href="#contact">contact</a>
+			<a href="work">{% trans "work" context "menu" %}</a>
+			<a href="#about">{% trans "about me" context "menu" %}</a>
+			<a href="#contact">{% trans "contact" context "menu" %}</a>
 		</nav>
 	</header>
 	
@@ -14,12 +14,12 @@
 		<div class="middle">
 			<div class="inner">
 				<p class="welcome-msg">
-					{% blocktrans %}
+					{% blocktrans trimmed %}
 					<span class="big"><span class="w">Welcome</span> to my <span class="w">portfolio</span></span><br/>
-					I'm a <span class="w">developper</span> who loves to work on new ideas
+					I'm a <span class="w">developer</span> who loves to work on new ideas
 					{% endblocktrans %}	
 				</p>
-				<a class="mobile-link" href="work">go to see my work</a>
+				<a class="mobile-link" href="work">{% trans "go to see my work" %}</a>
 			</div>
 		</div>
 	</div>

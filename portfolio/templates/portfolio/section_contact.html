@@ -2,14 +2,14 @@
 {% load static %}
 
 <section id="contact">	
-	<h1>Contact</h1>	
+	<h1>{% trans "Contact" %}</h1>	
 	<div class="contact-form">
 		
 		<form method="post" action="index#contact">
 			{% csrf_token %}
 			{{ form.as_p }}
 			<div class="form-actions">
-			  <button type="submit">Send</button>
+			  <button type="submit">{% trans "Send" %}</button>
 			</div>
 		</form>
 	</div>

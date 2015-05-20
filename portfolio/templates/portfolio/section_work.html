@@ -4,12 +4,12 @@
 	<header>
 		<h1><a href="{% url 'index' %}">Enzo Ghemard </a><span>{% trans "work" %}</span></h1>
 		<nav class="menu">
-			<a href="{% url 'index' %}#about">{% trans "about me" %}</a>
-			<a href="{% url 'index' %}#contact">{% trans "contact" %}</a>
+			<a href="{% url 'index' %}#about">{% trans "about me" context "menu" %}</a>
+			<a href="{% url 'index' %}#contact">{% trans "contact" context "menu" %}</a>
 		</nav>
 		<div style="clear:both"></div>
 	</header>
-	<a class="mobile-link" href="{% url 'index' %}">go back</a>
+	<a class="mobile-link" href="{% url 'index' %}">{% trans "go back" %}</a>
 
 	{% if tags %}
 	<div id="tags-filters">
@@ -41,7 +41,7 @@
 		<!--<div style="width:100%; height:100%; overflow:hidden"> android fix-->
 			<a class="filters-toggle search" href="">Toggle Filters</a>
 			<div id="filters-bar">
-				<a class="filters-toggle" href="">Close</a>
+				<a class="filters-toggle" href="">{% trans "Close" %}</a>
 				<div id="filters-list">
 					{% for filter in work_filters %}
 						<div class="filter" name="{{filter.name}}">
@@ -51,7 +51,7 @@
 						</div>
 					{% endfor %}
 				</div>
-				<a class="filters-reset" href="">Reset</a>
+				<a class="filters-reset" href="">{% trans "Reset" %}</a>
 			</div>
 		<!--</div>-->
 	</div>
