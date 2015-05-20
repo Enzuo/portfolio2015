@@ -16,6 +16,11 @@ class Tech(models.Model):
 	icon = models.ImageField(upload_to = 'images/icons/', db_column="icon")
 	icon_g = models.ImageField(upload_to = 'images/icons/', blank=True)
 	notes = models.CharField(max_length=200, blank=True)
+	#Tech are classified in groups group : 0 misc, do not display in search
+	# 1 Framework : Django Drupal Wordpress Android
+	# 2 Language : Python Php Javascript HTML5 Haxe
+	# 3 Special skills : Drawing Photoghraphy Photoshop
+	group = models.IntegerField( default= 0, help_text = "0 hidden #1 Framework : Django, # 2 Language : Python, # 3 Special skill : Drawing")
 	
 	def __unicode__(self):
 		return self.name

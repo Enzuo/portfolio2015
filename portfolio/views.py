@@ -61,6 +61,9 @@ def view_work(request, tag_id=0):
 			if t.id == int(tag_id):
 				t.active = True
 				
+	#filter techs
+	techs = techs.filter(group__gt=0).order_by("group")
+				
 	
 	context = {
 		#'works' : works,

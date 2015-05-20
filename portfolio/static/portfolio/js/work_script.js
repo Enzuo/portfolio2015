@@ -131,6 +131,11 @@ var WI = { //WI stands for WorkInteractions
 		$(".background").on("click",function(){
 			WI.workview.hide();
 		});
+		
+		$(".viewer-close").on("click",function(e){
+			e.preventDefault();
+			WI.workview.hide();
+		});
 	},
 	
 	
