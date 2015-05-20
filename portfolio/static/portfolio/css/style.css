@@ -24,12 +24,14 @@
 #mywork .mobile-link {
   color: #aaa;
   clear: both;
-  display: block;
   padding-left: 50px;
   text-align: left;
+  width: auto;
+}
+#mywork #work-list-wrapper {
+  clear: both;
 }
 #mywork #work-list {
-  clear: both;
   padding-top: 100px;
   height: 100%;
   width: 780px;
@@ -77,6 +79,11 @@
   -webkit-box-shadow: 3px 3px 10px #cccccc;
   box-shadow: 3px 3px 10px #cccccc;
 }
+#mywork #work-list .work-wrapper .work .thumbnail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 #mywork #work-list .work-wrapper .work .thumbnail img {
   width: 100%;
   height: 100%;
@@ -88,9 +95,9 @@
   width: 100%;
 }
 #mywork #work-list .work-wrapper .work .details h1 {
-  padding: 10px;
-  line-height: 40px;
-  font-size: 24px;
+  padding: 10px 30px 10px 10px;
+  line-height: 30px;
+  font-size: 18px;
 }
 #mywork #work-list .work-wrapper .work .work-techs {
   position: absolute;
@@ -105,6 +112,22 @@
 #mywork .work-full {
   display: none;
 }
+#mywork #tags-filters {
+  clear: both;
+}
+#mywork #tags-filters ul {
+  margin: 15px 50px;
+}
+#mywork #tags-filters li {
+  display: block;
+  float: left;
+  color: #aaa;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+#mywork #tags-filters li.active {
+  color: #1AA6EF;
+}
 #mywork #filters {
   position: fixed;
   right: 0px;
@@ -118,9 +141,12 @@
   height: 45px;
   margin-top: 100px;
   display: block;
-  background: url("../img/search.png") #000000;
+  background: url("../img/search.png") #000000 center;
   float: right;
   text-indent: -9999px;
+  border-radius: 8px 0 0 8px;
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
 }
 #mywork #filters #filters-bar .filters-toggle,
 #mywork #filters .filters-reset {
@@ -190,14 +216,103 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
 }
-#mywork #work-viewer .content-viewer {
-  background: #fff;
+#mywork #work-viewer .content-viewer-wrapper {
+  position: relative;
   height: 80%;
   top: 10%;
   margin: 0 10%;
+}
+#mywork #work-viewer .content-viewer-wrapper .content-viewer {
+  position: relative;
+  height: 100%;
+  background: #fff;
   overflow-y: scroll;
   z-index: 100;
-  position: relative;
+  -moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.56);
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.56);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.56);
+}
+#mywork #work-viewer .content-viewer-wrapper .viewer-close {
+  position: absolute;
+  bottom: -28px;
+  right: 22px;
+  display: block;
+  height: 14px;
+  line-height: 14px;
+  padding: 8px 12px;
+  background: #CFCFCF;
+  color: #777;
+  text-decoration: none;
+  border-radius: 0 0 10px 10px;
+}
+.work-content {
+  padding: 30px;
+  color: #333;
+}
+.work-content h1 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: #1672BE;
+}
+.work-content .techs {
+  margin-top: 20px;
+  clear: both;
+}
+.work-content .techs .tech {
+  display: block;
+  width: 33%;
+  float: left;
+  text-align: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 400px) {
+  .work-content .techs .tech {
+    width: 100%;
+  }
+}
+.work-content .tags {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 30px 30px;
+}
+.work-content .tags ul {
+  list-style-type: disc;
+}
+.work-content img {
+  max-width: 100%;
+}
+.work-content p.align {
+  text-align: center;
+}
+.work-content p b,
+.work-content h3 {
+  font-size: 1.2em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: block;
+  color: #1672BE;
+}
+.work-content ul {
+  list-style-type: disc;
+  padding-left: 50px;
+}
+.work-content .date {
+  font-size: 0.75em;
+  color: #aaa;
+}
+.work-content a {
+  color: #167AD4;
+  text-decoration: none;
+}
+.loader {
+  margin: auto;
+  padding: 30px;
+  width: 32px;
+  height: 32px;
+  background: url(../img/loader_w.gif) center no-repeat;
+  background-size: 32px 32px;
+  text-indent: -9999px;
 }
 #main {
   height: 100%;
@@ -263,12 +378,12 @@
 #main nav.language {
   position: absolute;
   bottom: 25px;
-  right: 95px;
+  right: 62px;
 }
 #main nav.language a {
   text-decoration: none;
   color: #CCC;
-  margin-right: 25px;
+  padding: 13px;
 }
 #main nav.language a:hover {
   color: #FFF;
@@ -316,7 +431,7 @@ header h1 a {
     margin-left: 20px;
   }
 }
-@media (min-width: 721px) {
+@media (min-width: 720px) {
   header nav.menu {
     display: block;
     float: right;
@@ -340,7 +455,7 @@ header h1 a {
  * Fast Travel Links, replace menu on small screens
  * 
  * *********************************************/
-@media (min-width: 721px) {
+@media (min-width: 720px) {
   .mobile-link {
     display: none;
   }
@@ -367,23 +482,23 @@ header h1 a {
 #about {
   background: url('../img/bck_pattern.png');
   color: #FFF;
-  padding: 180px 12%;
+  padding: 180px 12% 0 12%;
 }
 #about h1 {
   font-size: 36px;
   margin-bottom: 50px;
 }
-#about img {
+#about .about img {
   margin-right: 50px;
   margin-bottom: 40px;
 }
 @media (max-width: 720px) {
-  #about img {
+  #about .about img {
     width: 100%;
   }
 }
 @media (min-width: 721px) {
-  #about img {
+  #about .about img {
     max-width: 50%;
   }
 }
@@ -423,6 +538,7 @@ header h1 a {
   display: block;
   float: left;
   margin-right: 25px;
+  color: #FFF;
 }
 #about .skill .skill-bar {
   display: block;
@@ -452,6 +568,13 @@ header h1 a {
   display: block;
   height: 0;
   clear: both;
+}
+#about .hobbies {
+  margin: auto;
+  width: 80%;
+}
+#about .hobbies #ħobbies-svg {
+  width: 100%;
 }
 /*switch LOGIC*/
 /*
@@ -511,25 +634,53 @@ header h1 a {
     text-align: left;
   }
 }
+#contact .contact-form .form-actions {
+  margin-left: 130px;
+}
 #contact footer {
   position: absolute;
   bottom: 0px;
   left: 0px;
   text-align: center;
   width: 100%;
+  font-size: 13px;
+  /*
+		p {
+			 display:inline-block;
+			 line-height:32px;
+		}*/
 }
 @media (max-width: 720px) {
   #contact footer {
     position: relative;
   }
 }
-#contact footer p {
-  display: inline-block;
-  line-height: 32px;
+#contact footer p.email {
+  margin-top: 16px;
 }
 #contact footer img {
   width: 32px;
   height: 32px;
+}
+#contact .errorlist {
+  color: #F55;
+}
+.preloader {
+  width: 100%;
+  height: 100%;
+  display: table;
+  position: fixed;
+  z-index: 999;
+  text-align: center;
+  vertical-align: middle;
+  background: #000;
+}
+.preloader .container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.preloader img {
+  vertical-align: middle;
 }
 /*
 .hided{
