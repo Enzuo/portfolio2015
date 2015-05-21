@@ -287,14 +287,42 @@ header{
 		padding-top:50px;
 	}
 	
+	
+	/*------------------*
+	 * 	Contact Form	*
+	 *------------------*/
 	.contact-form{
 		padding-bottom:100px;	
+		
+		.mail-success{
+			color:#6598C5;
+		}
+		
+		.show-mail-button {
+			width:100%;
+			border-bottom: 1px #454444 solid;
+			height: 15px;
+			div{
+				display:block;
+				float:right;
+				margin-right: 25px;
+				background: #242424;
+				cursor:pointer;
+				padding:5px 25px 5px 3px;
+				background: #242424 url(../img/open.png) right 6px center no-repeat;
+				background-size: 12px 8px;
+			}
+		}
 		
 		input, textarea {
 			background:#eee;
 			max-width:100%;
 		}
 		
+		form.rolledup{
+			display:none;
+		}
+
 		form p{
 			margin: 5px 0;
 			
@@ -371,29 +399,3 @@ header{
 		vertical-align: middle;
 	}
 }
-
-
-/*
-.hided{
-	opacity:0;
-}
-*/
-/* work scroll */
-/*
-.viewport {
-	height:200px;
-}
-
-.overview {
-	position:absolute;
-	margin-top:150px;
-	margin-bottom:150px;
-	}
-
-.unselectable {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}*/

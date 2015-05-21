@@ -99,7 +99,6 @@ msgid "Drawing rabbits"
 msgstr "画画， 特别是画兔子"
 
 #: portfolio/templates/portfolio/section_contact.html:5
-#, fuzzy
 #| msgctxt "menu"
 #| msgid "contact"
 msgid "Contact"
@@ -112,7 +111,7 @@ msgstr "发出"
 #: portfolio/templates/portfolio/section_main.html:7
 msgctxt "menu"
 msgid "work"
-msgstr "工程"
+msgstr "作品"
 
 #: portfolio/templates/portfolio/section_main.html:8
 #: portfolio/templates/portfolio/section_work.html:7
@@ -132,12 +131,12 @@ msgid ""
 "\">portfolio</span></span><br/> I'm a <span class=\"w\">developer</span> who "
 "loves to work on new ideas"
 msgstr ""
-"<span class=\"big\"><span class=\"w\">欢迎</span> 我的小天地</span><br/> 我是"
-"一个来自法国的 <span class=\"w\">开发者</span>"
+"<span class=\"big\"><span class=\"w\">欢迎</span>来到我的小天地</span><br/>我是"
+"一个来自法国的<span class=\"w\">开发者</span>"
 
 #: portfolio/templates/portfolio/section_main.html:22
 msgid "go to see my work"
-msgstr "去看工程"
+msgstr "去看作品"
 
 #: portfolio/templates/portfolio/section_work.html:12
 msgid "go back"

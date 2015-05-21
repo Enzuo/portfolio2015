@@ -91,15 +91,15 @@ msgstr "Photographie"
 
 #: portfolio/templates/portfolio/section_about.html:36
 msgid "Video games"
-msgstr "Jeux videos"
+msgstr "Jeux vidéo"
 
 #: portfolio/templates/portfolio/section_about.html:37
 msgid "Travel & Languages"
-msgstr "Voyage et Langue étrangère"
+msgstr "Voyage et Langue étrangères"
 
 #: portfolio/templates/portfolio/section_about.html:38
 msgid "Playing pads sports"
-msgstr "Sport de raquettes"
+msgstr "Sports de raquettes"
 
 #: portfolio/templates/portfolio/section_about.html:39
 msgid "Drawing rabbits"
@@ -138,7 +138,7 @@ msgid ""
 msgstr ""
 "<span class=\"big\"><span class=\"w\">Bienvenue</span> sur mon <span class="
 "\"w\">portfolio</span><br/></span>Je suis un <span class=\"w\">développeur</"
-"span> qui adore travailler sur de nouvelles idées"
+"span> passioné par les nouvelles technologies"
 
 #: portfolio/templates/portfolio/section_main.html:22
 msgid "go to see my work"

@@ -23,6 +23,8 @@ def view_index(request):
 	
 	tags = Tag.objects.all();
 	
+	sent_mail = False
+	
 	#Contact form
 	if request.method == 'GET':
 		form = ContactForm()
@@ -38,6 +40,8 @@ def view_index(request):
 				send_mail(subject, message+" from "+name, from_email, ['potc.zone@gmail.com'])
 			except BadHeaderError:
 				pass
+			else:
+				sent_mail = True
 			#	return HttpResponse('Invalid header found.')
 			#return redirect('thanks')
 	
@@ -45,6 +49,7 @@ def view_index(request):
 		'aboutme' : aboutme,
 		'tags' : tags,
 		'form' : form,
+		'sent_mail' : sent_mail,
 	}
 	
 	return render(request, 'portfolio/view_index.html', context)

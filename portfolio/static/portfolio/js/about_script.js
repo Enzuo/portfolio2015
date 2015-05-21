@@ -42,6 +42,17 @@ var A = {
 			}
 		}
 		
+		/* ****************************
+		 * 
+		 * 	Contact
+		 * 
+		 * ***************************/
+		 
+		$(".show-mail-button div").on("click",function(){
+			$(".mail-dialog").slideUp();
+			$(".contact-form form").slideDown(); 
+		});
+		
 		
 	},
 	

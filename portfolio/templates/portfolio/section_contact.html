@@ -4,8 +4,15 @@
 <section id="contact">	
 	<h1>{% trans "Contact" %}</h1>	
 	<div class="contact-form">
-		
+		{% if sent_mail %}
+		<div class="mail-dialog">
+			<p class="mail-success">{% trans "Your message has been sent, I'll receive it in a moment." %}</p>
+			<div class="show-mail-button"><div>{% trans "resend a mail" %}</div></div>
+		</div>
+		<form class="rolledup" method="post" action="index#contact">	
+		{% else %}
 		<form method="post" action="index#contact">
+		{% endif %}
 			{% csrf_token %}
 			{{ form.as_p }}
 			<div class="form-actions">
