@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-21 04:57+0800\n"
+"POT-Creation-Date: 2015-05-21 18:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,34 +45,13 @@ msgstr "主题"
 msgid "Message"
 msgstr "正文"
 
-#: portfolio/templates/portfolio/index.html:16
-msgid ""
-"\n"
-"\t\t\t<span class=\"big\"><span class=\"w\">Welcome</span> to my <span class="
-"\"w\">portfolio</span><br/></span>\n"
-"\t\t\tI'm a <span class=\"w\">developper</span> who loves to work on new "
-"ideas\n"
-"\t\t\t"
-msgstr ""
-
-#: portfolio/templates/portfolio/index.html:39
 #: portfolio/templates/portfolio/section_about.html:15
 msgid "My skills"
 msgstr "我的技能"
 
-#: portfolio/templates/portfolio/index.html:42
 #: portfolio/templates/portfolio/section_about.html:29
 msgid "My hobbies"
 msgstr "我的爱好"
-
-#: portfolio/templates/portfolio/index.html:54
-msgid "Add me on : "
-msgstr ""
-
-#: portfolio/templates/portfolio/index.html:72
-#: portfolio/templates/portfolio/section_work.html:5
-msgid "work"
-msgstr "工程"
 
 #: portfolio/templates/portfolio/section_about.html:34
 msgid "Cruising around"
@@ -99,12 +78,18 @@ msgid "Drawing rabbits"
 msgstr "画画， 特别是画兔子"
 
 #: portfolio/templates/portfolio/section_contact.html:5
-#| msgctxt "menu"
-#| msgid "contact"
 msgid "Contact"
 msgstr "联系"
 
-#: portfolio/templates/portfolio/section_contact.html:12
+#: portfolio/templates/portfolio/section_contact.html:9
+msgid "Your message has been sent, I'll receive it in a moment."
+msgstr "您的邮件已发送"
+
+#: portfolio/templates/portfolio/section_contact.html:10
+msgid "resend a mail"
+msgstr "再发一个邮件"
+
+#: portfolio/templates/portfolio/section_contact.html:19
 msgid "Send"
 msgstr "发出"
 
@@ -131,12 +116,16 @@ msgid ""
 "\">portfolio</span></span><br/> I'm a <span class=\"w\">developer</span> who "
 "loves to work on new ideas"
 msgstr ""
-"<span class=\"big\"><span class=\"w\">欢迎</span>来到我的小天地</span><br/>我是"
-"一个来自法国的<span class=\"w\">开发者</span>"
+"<span class=\"big\"><span class=\"w\">欢迎</span>来到我的小天地</span><br/>我"
+"是一个来自法国的<span class=\"w\">开发者</span>"
 
 #: portfolio/templates/portfolio/section_main.html:22
 msgid "go to see my work"
 msgstr "去看作品"
+
+#: portfolio/templates/portfolio/section_work.html:5
+msgid "work"
+msgstr "工程"
 
 #: portfolio/templates/portfolio/section_work.html:12
 msgid "go back"

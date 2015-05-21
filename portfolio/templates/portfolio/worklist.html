@@ -26,7 +26,16 @@
 				
 				<section class="work-full">
 					<div class="work-content">
-						<h1>{{ w.title }}</h1>
+						<h1>{{ w.title }}</h1>						
+						<div class="tags">
+							<ul>
+							{% for t in w.tags.all %}
+							<li><div class="tag" name="{{t.name}}">
+								<p>{{t.name}}</p>
+							</div></li>
+							{% endfor %}
+							</ul>
+						</div>
 						<p class="date">{{ w.date }}</p>
 						{{ w.content |safe}}						
 						<div class="techs">
@@ -38,15 +47,7 @@
 							{% endfor %}
 						</div>
 						
-						<div class="tags">
-							<ul>
-							{% for t in w.tags.all %}
-							<li><div class="tag" name="{{t.name}}">
-								<p>{{t.name}}</p>
-							</div></li>
-							{% endfor %}
-							</ul>
-						</div>
+
 					</div>
 				</section>
 			</div>	

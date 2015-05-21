@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-21 04:57+0800\n"
+"POT-Creation-Date: 2015-05-21 18:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,40 +46,13 @@ msgstr "Sujet"
 msgid "Message"
 msgstr "Message"
 
-#: portfolio/templates/portfolio/index.html:16
-msgid ""
-"\n"
-"\t\t\t<span class=\"big\"><span class=\"w\">Welcome</span> to my <span class="
-"\"w\">portfolio</span><br/></span>\n"
-"\t\t\tI'm a <span class=\"w\">developper</span> who loves to work on new "
-"ideas\n"
-"\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t<span class=\"big\"><span class=\"w\">Bienvenue</span> sur mon <span "
-"class=\"w\">portfolio</span><br/></span>\n"
-"\t\t\tJe suis un <span class=\"w\">développeur</span> qui adore travailler "
-"sur de nouvelles idées\n"
-"\t\t\t"
-
-#: portfolio/templates/portfolio/index.html:39
 #: portfolio/templates/portfolio/section_about.html:15
 msgid "My skills"
 msgstr "Mes compétences"
 
-#: portfolio/templates/portfolio/index.html:42
 #: portfolio/templates/portfolio/section_about.html:29
 msgid "My hobbies"
 msgstr "Mes loisirs"
-
-#: portfolio/templates/portfolio/index.html:54
-msgid "Add me on : "
-msgstr ""
-
-#: portfolio/templates/portfolio/index.html:72
-#: portfolio/templates/portfolio/section_work.html:5
-msgid "work"
-msgstr "Réalisations"
 
 #: portfolio/templates/portfolio/section_about.html:34
 msgid "Cruising around"
@@ -95,7 +68,7 @@ msgstr "Jeux vidéo"
 
 #: portfolio/templates/portfolio/section_about.html:37
 msgid "Travel & Languages"
-msgstr "Voyage et Langue étrangères"
+msgstr "Voyage et Langues étrangères"
 
 #: portfolio/templates/portfolio/section_about.html:38
 msgid "Playing pads sports"
@@ -103,13 +76,21 @@ msgstr "Sports de raquettes"
 
 #: portfolio/templates/portfolio/section_about.html:39
 msgid "Drawing rabbits"
-msgstr "Dessins"
+msgstr "Dessin"
 
 #: portfolio/templates/portfolio/section_contact.html:5
 msgid "Contact"
 msgstr "Contact"
 
-#: portfolio/templates/portfolio/section_contact.html:12
+#: portfolio/templates/portfolio/section_contact.html:9
+msgid "Your message has been sent, I'll receive it in a moment."
+msgstr "Votre message a bien été envoyé, je reviendrais vers vous dans les plus bref delais."
+
+#: portfolio/templates/portfolio/section_contact.html:10
+msgid "resend a mail"
+msgstr "Renvoyer un mail"
+
+#: portfolio/templates/portfolio/section_contact.html:19
 msgid "Send"
 msgstr "Envoyer"
 
@@ -144,6 +125,10 @@ msgstr ""
 msgid "go to see my work"
 msgstr "voir mes réalisations"
 
+#: portfolio/templates/portfolio/section_work.html:5
+msgid "work"
+msgstr "Réalisations"
+
 #: portfolio/templates/portfolio/section_work.html:12
 msgid "go back"
 msgstr "retour"
@@ -163,9 +148,3 @@ msgstr ""
 #: portfolio/templates/portfolio/view_wechat.html:24
 msgid "Scan the QR code to add me on wechat"
 msgstr "Scanner le code QR pour m'ajouter sur wechat"
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgid "Name"
-#~ msgstr "Nom"
