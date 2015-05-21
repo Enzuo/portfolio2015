@@ -156,10 +156,14 @@
 			color:#aaa;
 			padding: 10px 20px;
 			cursor:pointer;
+			
+			
 		}
 		
 		li.active{
-			color:#1AA6EF;;
+			color:#1AA6EF;
+			background: url("../img/checked.png") no-repeat center right;
+			background-size:16px 12px;
 		}
 	}
 	
@@ -183,6 +187,24 @@
 			border-radius: 8px 0 0 8px;
 			background-size: 22px 22px;
 			background-repeat: no-repeat;
+			
+			-moz-box-shadow: 3px 3px 5px_radius #A9A9A9;
+			-webkit-box-shadow: 3px 3px 5px #A9A9A9;
+			box-shadow: 3px 3px 5px #A9A9A9;
+			
+			position:relative;
+			
+			.filters-selected{
+				display:none;
+				background: #E11F1F;
+				width: 8px;
+				height: 8px;
+				position: absolute;
+				border: 1px solid #FFF;
+				top: 6px;
+				right: 12px;
+				border-radius: 6px;
+			}
 		}
 		
 		#filters-bar .filters-toggle, .filters-reset{
@@ -205,7 +227,7 @@
 			position:absolute;
 			height:100%;
 			width:100%;
-			right:-@filter-width;
+			right:-@filter-width + 5px; 
 			top:0px;
 			background:#000;
 			color:#FFF;

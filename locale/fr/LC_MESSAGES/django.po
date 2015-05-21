@@ -138,7 +138,7 @@ msgid ""
 msgstr ""
 "<span class=\"big\"><span class=\"w\">Bienvenue</span> sur mon <span class="
 "\"w\">portfolio</span><br/></span>Je suis un <span class=\"w\">développeur</"
-"span> passioné par les nouvelles technologies"
+"span> passionné par les nouvelles technologies"
 
 #: portfolio/templates/portfolio/section_main.html:22
 msgid "go to see my work"

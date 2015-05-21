@@ -22,7 +22,7 @@ Work.prototype.show = function(){
 
 var WI = { //WI stands for WorkInteractions
 	
-	filters_menu : false,
+	filters_menu : false, //boolean to check if filters menu is open or not
 	filter_list : new Array(),
 	techs_nb : 1000,
 	
@@ -74,6 +74,20 @@ var WI = { //WI stands for WorkInteractions
 					WI.rollDownFilterMenu();
 				}
 					
+			}
+		});
+		
+		//Or click on the background
+		$( "body" ).click(function(e){
+			if(WI.filters_menu){
+				var target = $(e.target);
+				var l = target.parents('#filters').length;
+				if(l){
+				}
+				else
+				{
+					WI.rollUpFilterMenu();
+				}
 			}
 		});
 		
@@ -276,8 +290,7 @@ var WI = { //WI stands for WorkInteractions
 	},
 	
 	addFilter : function( element ){
-		console.log(element);
-		
+		$(".filters-selected").show();
 		//If nothing is filtered
 		// --> Disable everything and put element as filter
 		if(WI.filter_list.length == 0){
@@ -311,18 +324,20 @@ var WI = { //WI stands for WorkInteractions
 			}
 			
 		}	
+		
 	},
 	
 	resetFilters : function(){
 		$(".filter").removeClass("disabled");
 		WI.filter_list.length = 0;
+		
+		$(".filters-selected").hide();
 	},
 	
 	// Without forgetting to check that if last element got disabled then we reset
 	removeFilter : function( element ){
 		if( WI.filter_list.length == 1 ){
-			$(".filter").removeClass("disabled");
-			WI.filter_list.length = 0;
+			WI.resetFilters();
 		}
 		else{
 			var filter_name = element.attr("name");
