@@ -374,23 +374,25 @@ header{
 		
 		.social-links a{
 			display:inline-block;
-			margin: 0 1px;		
+			margin: 0px 1px;
 			
 			img {
+				position:relative;
 				width:32px;
 				height:32px;
+				top:0px;
 				
-				-webkit-transition: margin 0.2s linear;
-				-moz-transition: margin 0.2s linear;
-				-ms-transition: margin 0.2s linear;
-				-o-transition: margin 0.2s linear;
-				transition: margin 0.2s linear;
+				-webkit-transition: top 0.1s linear;
+				-moz-transition: top 0.1s linear;
+				-ms-transition: top 0.1s linear;
+				-o-transition: top 0.1s linear;
+				transition: top 0.1s linear;
 			}
 		}
 		
 		.social-links a:hover{
 			img{
-				margin-bottom:10px;
+				top:-5px;
 			}
 			
 		}

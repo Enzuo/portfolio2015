@@ -34,6 +34,8 @@ var WI = { //WI stands for WorkInteractions
 	
 	ajaxTimer : false,
 	
+	shiftkey : false,
+	
 	init : function() {
 			
 		
@@ -115,7 +117,8 @@ var WI = { //WI stands for WorkInteractions
 			var active = tag.hasClass("active");
 			
 			//Remove the others from active list only one can be active at the same time
-			$("#tags-filters li").removeClass("active");
+			if(!WI.shiftkey)
+				$("#tags-filters li").removeClass("active");
 			
 			if(active)
 				tag.removeClass("active");
@@ -125,6 +128,19 @@ var WI = { //WI stands for WorkInteractions
 			
 			//Has changed so prepare to do AJAX
 			WI.loadWorkList();
+		});
+		
+		//Track shift key down
+		$(document).keydown(function(e){
+			console.log(e.shiftKey);
+			if (e.shiftKey)
+				WI.shiftkey = true;
+		});
+		$(document).keyup(function(e){
+			console.log("release");
+			console.log(e.shiftKey);
+			if (e.which == 16)
+				WI.shiftkey = false;
 		});
 	},
 	
