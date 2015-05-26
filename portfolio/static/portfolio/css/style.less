@@ -15,6 +15,7 @@
 @import "section_work.less";
 @import "section_main.less";
 /**********
+ * 
  * This file is all about main structures
  * Positions of elements toward each others
  * 
@@ -234,6 +235,9 @@ header{
 	.hobbies{
 		margin:auto;
 		width:80%;	
+		@media (max-width: 720px){
+			width:100%;
+		}
 		
 		#ħobbies-svg{
 			width:100%;
@@ -367,11 +371,31 @@ header{
 		p.email{
 			margin-top:16px;
 		}
-			 
-		img {
-			width:32px;
-			height:32px;
+		
+		.social-links a{
+			display:inline-block;
+			margin: 0 1px;		
+			
+			img {
+				width:32px;
+				height:32px;
+				
+				-webkit-transition: margin 0.2s linear;
+				-moz-transition: margin 0.2s linear;
+				-ms-transition: margin 0.2s linear;
+				-o-transition: margin 0.2s linear;
+				transition: margin 0.2s linear;
+			}
 		}
+		
+		.social-links a:hover{
+			img{
+				margin-bottom:10px;
+			}
+			
+		}
+			 
+
 	}
 	
 	.errorlist{

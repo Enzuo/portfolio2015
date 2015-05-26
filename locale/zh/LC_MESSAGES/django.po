@@ -102,13 +102,13 @@ msgstr "作品"
 #: portfolio/templates/portfolio/section_work.html:7
 msgctxt "menu"
 msgid "about me"
-msgstr "关于"
+msgstr "关于我"
 
 #: portfolio/templates/portfolio/section_main.html:9
 #: portfolio/templates/portfolio/section_work.html:8
 msgctxt "menu"
 msgid "contact"
-msgstr "联系"
+msgstr "联系我"
 
 #: portfolio/templates/portfolio/section_main.html:17
 msgid ""
@@ -125,7 +125,7 @@ msgstr "去看作品"
 
 #: portfolio/templates/portfolio/section_work.html:5
 msgid "work"
-msgstr "工程"
+msgstr "作品"
 
 #: portfolio/templates/portfolio/section_work.html:12
 msgid "go back"

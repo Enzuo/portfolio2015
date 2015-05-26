@@ -111,7 +111,17 @@ var WI = { //WI stands for WorkInteractions
 		$("#tags-filters").on("click", "li", function(){
 			var tag = $(this);
 			var tag_id = tag.attr("data");
-			tag.toggleClass("active");
+			
+			var active = tag.hasClass("active");
+			
+			//Remove the others from active list only one can be active at the same time
+			$("#tags-filters li").removeClass("active");
+			
+			if(active)
+				tag.removeClass("active");
+			else
+				tag.addClass("active");
+					
 			
 			//Has changed so prepare to do AJAX
 			WI.loadWorkList();
