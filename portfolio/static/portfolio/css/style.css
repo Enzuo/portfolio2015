@@ -17,6 +17,7 @@
 }
 #mywork header h1 span {
   margin-left: 25px;
+  color: #6D96AB;
 }
 #mywork header nav.menu a {
   border: #777 1px solid;
@@ -30,6 +31,7 @@
 }
 #mywork #work-list-wrapper {
   clear: both;
+  border-top: 1px solid #E3E3E3;
 }
 #mywork #work-list {
   padding-top: 100px;
@@ -101,7 +103,7 @@
 }
 #mywork #work-list .work-wrapper .work .work-techs {
   position: absolute;
-  right: -20px;
+  right: -23px;
   top: -10px;
   background: none repeat scroll 0 0 #fff;
   border: 1px solid #ccc;
@@ -116,7 +118,24 @@
   clear: both;
 }
 #mywork #tags-filters ul {
-  margin: 15px 50px;
+  margin: 15px 60px;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
+}
+@media (max-width: 520px), (max-height: 320px) {
+  #mywork #tags-filters {
+    /*same condition as title*/
+  }
+  #mywork #tags-filters ul {
+    margin: 0;
+  }
 }
 #mywork #tags-filters li {
   display: block;
@@ -124,6 +143,11 @@
   color: #aaa;
   padding: 10px 20px;
   cursor: pointer;
+}
+@media (max-width: 520px) {
+  #mywork #tags-filters li {
+    width: 80%;
+  }
 }
 #mywork #tags-filters li.active {
   color: #1AA6EF;
@@ -406,6 +430,7 @@
   color: #FFF;
 }
 /**********
+ * 
  * This file is all about main structures
  * Positions of elements toward each others
  * 
@@ -590,6 +615,11 @@ header h1 a {
   margin: auto;
   width: 80%;
 }
+@media (max-width: 720px) {
+  #about .hobbies {
+    width: 100%;
+  }
+}
 #about .hobbies #ħobbies-svg {
   width: 100%;
 }
@@ -699,9 +729,23 @@ header h1 a {
 #contact footer p.email {
   margin-top: 16px;
 }
-#contact footer img {
+#contact footer .social-links a {
+  display: inline-block;
+  margin: 0px 1px;
+}
+#contact footer .social-links a img {
+  position: relative;
   width: 32px;
   height: 32px;
+  top: 0px;
+  -webkit-transition: top 0.1s linear;
+  -moz-transition: top 0.1s linear;
+  -ms-transition: top 0.1s linear;
+  -o-transition: top 0.1s linear;
+  transition: top 0.1s linear;
+}
+#contact footer .social-links a:hover img {
+  top: -5px;
 }
 #contact .errorlist {
   color: #F55;
