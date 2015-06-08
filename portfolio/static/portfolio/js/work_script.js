@@ -14,9 +14,12 @@ Work.prototype.getTechs = function(){
 	});
 }
 Work.prototype.hide = function(){
+	if( !this.element.hasClass("filtered"))
+		this.element.addClass("filtered");
 	this.element.hide();
 }
 Work.prototype.show = function(){
+	this.element.removeClass("filtered");
 	this.element.show();
 }
 
@@ -279,12 +282,24 @@ var WI = { //WI stands for WorkInteractions
 		
 		
 		if( animation ){
+			var Popindice = 0;
 			$( ".work" ).each(
+				
 				function(i){
 					var e = $(this);
-					setTimeout(function(){
-						WI.popObject( e );
-					},i*450);
+					var p = e.parent();
+					//Instant pop
+					if( p.hasClass( "filtered" )){
+						e.css({'opacity': 1 });
+					}
+					
+					//Delayed pop
+					else{
+						setTimeout(function(){
+							WI.popObject( e );
+						},Popindice*450);
+						Popindice++;
+					}
 				}	
 			)
 		}

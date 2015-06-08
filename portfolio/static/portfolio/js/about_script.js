@@ -15,8 +15,39 @@ var A = {
 			A.createSkillsBarPercent();	
 		});
 		
-		/* SVG */
-		window.onload=function() {					
+		/* ****************
+		 * 
+		 * 		SVG 
+		 * 
+		 * ***************/
+		var svg = document.getElementById("ħobbies-svg");
+		
+		svg.addEventListener("load",function(){
+			var svgContent = svg.contentDocument;
+			
+			if(svgContent){
+				//First deploy the legend list to the svg, this way we get the right translation for the svg
+				$("#hobbies-legend li").each(function(){
+					
+					var legend = $(this);
+					var targetid = legend.attr("tar");
+					var txt = legend.html();
+					
+					//Now get the svg item corresponding to the legend's target
+					var svgItem = svgContent.getElementById(targetid+"_txt");
+					if(svgItem){
+						
+						var tspan = svgItem.getElementsByTagName('tspan');
+						if(tspan && tspan[0]){
+							tspan[0].innerHTML = txt;
+							tspan[0].style.fill = "#FFF";
+						}
+								
+					}	
+				});
+			}
+		});
+		/*window.onload=function() {					
 			
 			var a = document.getElementById("ħobbies-svg");
 			var svgDoc = a.contentDocument;
@@ -40,7 +71,7 @@ var A = {
 					
 				});
 			}
-		}
+		}*/
 		
 		/* ****************************
 		 * 
