@@ -89,6 +89,8 @@ def worklist(request):
 			# Query Works object
 			works = Work.objects.all()
 			
+			# Filtering
+			from django.db.models import Q
 			if(len(tagsRaw)):
 				tags = tagsRaw.split('_')
 				results = {'success':True, 'data':tags}
@@ -97,7 +99,6 @@ def worklist(request):
 			
 			
 				#create Q Object
-				from django.db.models import Q
 				tags_filter = Q()
 				
 				
@@ -107,6 +108,12 @@ def worklist(request):
 					tags_filter = tags_filter | q
 					
 				works = works.filter( tags_filter ).distinct()
+			else:
+				#filter out drawing & photography when everything is selected
+				works = works.exclude( Q(tags = 1) )
+				results['success'] = True
+			
+			#----
 				
 			works = works.order_by('-date')
 			

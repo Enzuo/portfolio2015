@@ -266,7 +266,8 @@ var WI = { //WI stands for WorkInteractions
 				from:{width:e.width()/2,height:e.height()/2}, 
 				percent: 100, 
 				direction: 'both', 
-			}, 700);	
+				easing: 'easeOutBack',
+			}, 450);	
 	},
 	
 	popWorkObjects : function( animation ) {
@@ -297,7 +298,7 @@ var WI = { //WI stands for WorkInteractions
 					else{
 						setTimeout(function(){
 							WI.popObject( e );
-						},Popindice*450);
+						},Popindice*200);
 						Popindice++;
 					}
 				}	
