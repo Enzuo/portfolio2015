@@ -15,6 +15,12 @@ var A = {
 			A.createSkillsBarPercent();	
 		});
 		
+		//Age
+		var today = new Date().getFullYear()
+		var age = today - 1992
+		if( age > 22 && age < 30 ) //check if age is possible
+			$(".age").html(age);
+		
 		/* ****************
 		 * 
 		 * 		SVG 
