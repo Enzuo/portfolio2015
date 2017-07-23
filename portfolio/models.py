@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.html import format_html
 from django.conf import settings
 from PIL import Image
+from cloudinary.utils import cloudinary_url
 
 import os
 from cStringIO import StringIO
@@ -26,7 +27,8 @@ class Tech(models.Model):
 		return self.name
 		
 	def icon_32(self):
-		return format_html('<img style="height:32px; width:32px" src="'+settings.MEDIA_URL+'{}"/>', self.icon,)
+		url, options = cloudinary_url(self.icon.name, width = 32, height = 32, crop = "fill")
+		return format_html('<img style="height:32px; width:32px" src="{}"/>', url)
 						
 	def __init__(self, *args, **kwargs):
 		super(Tech, self).__init__(*args, **kwargs)

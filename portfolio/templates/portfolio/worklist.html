@@ -1,14 +1,14 @@
+{% load cloudinary %}
+
 {% if works %}	
 	<div id="work-list">
 		{% for w in works %}
 		<div class="work-wrapper" >
 			<div class="work" id="work-{{ w.id }}" style="opacity:0;">
 				<section class="thumbnail">
-					{% if w.thumb %}
-						<img src="{{ MEDIA_URL }}{{ w.thumb }}" data-original="{{ MEDIA_URL }}{{ w.image }}"/>
-					{% else %}
-						<img src="{{ MEDIA_URL }}{{ w.image }}" />
-					{% endif %}
+					
+					{# cloudinary w.image.name width=520 height=520 crop="fill" #}
+					<img src="http://res.cloudinary.com/{{ cloud_name }}/image/upload/c_fill,h_220,w_220/v1/{{ w.image }}" data-original="http://res.cloudinary.com/{{ cloud_name }}/image/upload/c_fill,h_520,w_520/v1/{{ w.image }}" />
 				</section>
 				
 				<section class="details" style="display:none">

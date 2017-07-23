@@ -2,6 +2,7 @@ import json
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
+from django.conf import settings
 
 from django.utils.translation import (
 	LANGUAGE_SESSION_KEY, check_for_language, get_language, to_locale,
@@ -75,8 +76,9 @@ def view_work(request, tag_id=0):
 		'work_filters' : techs,
 		'tags' : tags,
 		'tags_selected' : tag_id,
+		'cloud_name' : settings.CLOUD_NAME,
 	}
-	
+
 	return render(request, 'portfolio/view_work.html', context)
 
 def worklist(request):
@@ -119,7 +121,8 @@ def worklist(request):
 			
 			context = RequestContext(request,{
 				'works' : works,
-			});
+				'cloud_name' : settings.CLOUD_NAME,
+			})
 			
 			from django.template.loader import render_to_string
 			

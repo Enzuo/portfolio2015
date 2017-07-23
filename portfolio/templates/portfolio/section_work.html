@@ -1,4 +1,5 @@
 {% load i18n %} 
+{% load cloudinary %}
 
 <section id="mywork">
 	<header>
@@ -46,8 +47,8 @@
 					{% for filter in work_filters %}
 						<div class="filter" name="{{filter.name}}">
 							
-							<img class="enabled" src="{{ MEDIA_URL }}{{ filter.icon }}" title="{{ filter.name }}" />
-							<img class="disabled" src="{{ MEDIA_URL }}{{ filter.icon_g }}" title="{{ filter.name }}" />
+							{% cloudinary filter.icon.name width=32 height=32 crop="fill" class="enabled" %}
+							{% cloudinary filter.icon.name width=32 height=32 crop="fill" effect="grayscale" class="disabled" %}
 						</div>
 					{% endfor %}
 				</div>
