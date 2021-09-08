@@ -9,7 +9,7 @@ funcsigs==1.0.2
 gunicorn==19.3.0
 mock==2.0.0
 pbr==3.1.1
-Pillow==2.8.1
+Pillow==8.3.2
 psycopg2==2.6
 six==1.10.0
 static3==0.6.0
